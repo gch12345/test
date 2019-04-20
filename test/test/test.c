@@ -24,13 +24,14 @@
 //	int i = 0, k = 0, h = 0;
 //	for (i = 1; i <= 9; i++)
 //	{
-//		for (k = 1; k <= 9; k++)
+//		for (k = 1; k <= i; k++)
 //		{
 //			h = i*k;
-//			printf("%d*%d\t", i, k);
+//			printf("%d*%d=%-2d ",k, i ,h);
 //		}
+//		printf("\n");
 //	}
-//
+//	system("pause");
 //	return 0;
 //}
 //int main(){
