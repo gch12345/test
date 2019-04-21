@@ -44,6 +44,7 @@
 //	}
 //	return 0;
 //}
+//给定两个整形变量的值，将两个值的内容进行交换。
 //int main()
 //{
 //	int a = 0, b = 0, c = 0;
@@ -54,6 +55,7 @@
 //	system("pause");
 //	return 0;
 //}
+//不允许创建临时变量，交换两个数的内容
 //int main()
 //{
 //	int a = 0, b = 0;
@@ -66,6 +68,7 @@
 //	system("pause");
 //	return 0;
 //}
+//求10 个整数中最大值
 //int main()
 //{
 //	int a[10] = { 0 }, b = 0, i = 0, j = 0;
@@ -85,6 +88,7 @@
 //	system("pause");
 //	return 0;
 //}
+//将三个数按从大到小输出
 //int main()
 //{
 //	int a[3] = { 0 }, i = 0,j = 0, b = 0;
@@ -109,6 +113,7 @@
 //	system("pause");
 //	return 0;
 //}
+//求两个数的最大公约数
 //int main()
 //{
 //	int a = 0, b = 0,c = 0,d = 0,i = 0 ;
@@ -121,9 +126,84 @@
 //		if (d%i == 0 && c%i == 0){
 //			printf("最大公约数为%d\n", i);
 //			break;
-//		}	if (i = 1)
-//			printf("没有最大公约数\n");
+//		}	
 //	}	
 //	system("pause"); 
 //	return 0;
 //}
+//求两个数的最大公约数(欧几里得定理及辗转相处法)
+//int main()
+//{
+//	int m = 0, n = 0, k = 0, h = 0;
+//	scanf("%d%d", &m, &n);
+//	if (m < n)
+//		k = m,h = n;
+//	else k = n,h = m;
+//	while (k > 0)
+//	{
+//		int t = 0;
+//		t = h;
+//		h = k;
+//		k = t%k;
+//	}
+//	printf("最大公约数是%d\n", h);
+//	system("pause");
+//	return 0;
+//}
+//将数组a中的内容和数组b中的内容进行交换。
+//int main()
+//{
+//	int a[5] = { 0 }, b[5] = { 0 }, i = 0,k = 0;
+//		printf("a[5]");
+//	for (i = 0; i < 5; i++)
+//		scanf("%d", &a[i]);
+//		printf("b[5]");
+//	for (i = 0; i < 5; i++)
+//		scanf("%d", &b[i]);
+//	for (i = 0; i < 5; i++)
+//	{
+//		k = a[i];
+//		a[i] = b[i];
+//		b[i] = k;
+//	}
+//		printf("a[5]");
+//	for (i = 0; i < 5; i++)
+//		printf("%d ", a[i]);
+//		printf("\n");
+//		printf("b[5]");
+//	for (i = 0; i < 5; i++)
+//		printf("%d ", b[i]);
+//	system("pause");
+//	return 0;
+//}
+//计算1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100 的值。
+//int main()
+//{
+//	float sum = 0.0; int i = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		if (i%2==0)
+//			i = -i;
+//		sum = sum + 1.0/i;
+//		if (i % 2 == 0)
+//			i = -i;
+//	}
+//	printf("%f", sum);
+//	system("pause");
+//	return 0;
+//}
+//编写程序数一下 1到 100 的所有整数中出现多少次数字9。
+int main()
+{
+	int i = 0, j = 0;
+	for (i = 1; i <= 100; i++)
+	{
+		if (i % 10 == 9)
+			j++;
+		if (i / 10 == 9)
+			j++;
+	}
+	printf("总次数%d\n", j);
+	system("pause");
+	return 0;
+}
