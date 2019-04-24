@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 //int main()
 //{
 //	int i = 0, n = 0;
@@ -232,6 +233,62 @@
 //	{
 //		printf("ц╩спур╣╫\n");
 //	}
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	char arr1[] = "                         ";
+//	char arr2[] = "*************************";
+//	char arr3[] = "                         ";
+//	int i = strlen(arr1) / 2;
+//	int left = i;
+//	int right = i;
+//	while (left >= 0)
+//	{
+//		arr1[left] = arr2[left];
+//		arr1[right] = arr2[right];
+//		printf("%s\n", arr1);
+//		left--;
+//		right++;
+//	}
+//	left++;
+//	right--;
+//	while (left != right)
+//	{
+//		arr1[left] = arr3[left];
+//		arr1[right] = arr3[right];
+//		printf("%s\n", arr1);
+//		left++;
+//		right--;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	int i=0, arr[3] = { 0 };
+//	for (i = 0; i < 999; i++)
+//	{
+//		arr[0] = i / 100;
+//		arr[1] = (i - arr[0] * 100) / 10;
+//		arr[2] = (i - arr[0] * 100 - arr[1] * 10);
+//		if (arr[0] * arr[0] * arr[0] + arr[1] * arr[1] * arr[1] + arr[2] * arr[2] * arr[2] == i)
+//			printf("%d ", i);
+//	}
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0, k = 2, sum = 0, sum1 = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		sum = sum * 10 + 2;
+//		sum1 = sum1 + sum;
+//	}
+//	printf("%d\n", sum1);
 //	system("pause");
 //	return 0;
 //}
