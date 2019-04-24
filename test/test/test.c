@@ -89,7 +89,7 @@
 //	return 0;
 //}
 //将三个数按从大到小输出
-//int main()
+//int main()//（冒泡排序法）
 //{
 //	int a[3] = { 0 }, i = 0,j = 0, b = 0;
 //	for (i = 0; i < 3; i++)
@@ -193,17 +193,45 @@
 //	return 0;
 //}
 //编写程序数一下 1到 100 的所有整数中出现多少次数字9。
-int main()
-{
-	int i = 0, j = 0;
-	for (i = 1; i <= 100; i++)
-	{
-		if (i % 10 == 9)
-			j++;
-		if (i / 10 == 9)
-			j++;
-	}
-	printf("总次数%d\n", j);
-	system("pause");
-	return 0;
-}
+//int main()
+//{
+//	int i = 0, j = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		if (i % 10 == 9)
+//			j++;
+//		if (i / 10 == 9)
+//			j++;
+//	}
+//	printf("总次数%d\n", j);
+//	system("pause");
+//	return 0;
+//}
+//(二分查找)
+//int main()
+//{
+//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, left = 0, right = 0, k = 99;
+//	right = sizeof(arr) / sizeof(arr[0]) - 1;
+//	while (left <= right)
+//	{
+//		int h = left + (right-left) / 2;
+//		if (arr[h] < k)
+//		{
+//			left = h + 1;
+//		}
+//		else if (arr[h]>k)
+//		{
+//			right = h - 1;
+//		}
+//		else{
+//			printf("找到了,下标是:%d\n",h );
+//			break;
+//		}
+//	}
+//	if (left > right)
+//	{
+//		printf("没有找到\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
