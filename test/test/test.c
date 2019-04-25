@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<math.h>
 //int main()
 //{
 //	int i = 0, n = 0;
@@ -236,6 +237,7 @@
 //	system("pause");
 //	return 0;
 //}
+//(在屏幕上输出菱形图案)
 //int main()
 //{
 //	char arr1[] = "                         ";
@@ -266,26 +268,29 @@
 //	system("pause");
 //	return 0;
 //}
+//（求出0～999之间的所有“水仙花数”并输出）
 //int main()
 //{
 //	int i=0, arr[3] = { 0 };
 //	for (i = 0; i < 999; i++)
 //	{
 //		arr[0] = i / 100;
-//		arr[1] = (i - arr[0] * 100) / 10;
-//		arr[2] = (i - arr[0] * 100 - arr[1] * 10);
-//		if (arr[0] * arr[0] * arr[0] + arr[1] * arr[1] * arr[1] + arr[2] * arr[2] * arr[2] == i)
+//		arr[1] = i % 100 / 10;
+//		arr[2] = i % 10;
+//		if (pow(arr[0], 3) + pow(arr[1], 3) + pow(arr[2], 3) == i)
 //			printf("%d ", i);
 //	}
 //	system("pause");
 //	return 0;
 //}
+//（求Sn=a+aa+aaa+aaaa+aaaaa的前5项之和，其中a是一个数字）
 //int main()
 //{
-//	int i = 0, k = 2, sum = 0, sum1 = 0;
+//	int i = 0, k = 0, sum = 0, sum1 = 0;
+//  scanf("%d", &k);
 //	for (i = 0; i < 5; i++)
 //	{
-//		sum = sum * 10 + 2;
+//		sum = sum * 10 + k;
 //		sum1 = sum1 + sum;
 //	}
 //	printf("%d\n", sum1);
