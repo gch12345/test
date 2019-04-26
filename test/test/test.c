@@ -297,3 +297,60 @@
 //	system("pause");
 //	return 0;
 //}
+//(二分查找）复习
+//int main()
+//{
+//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int i = 0;
+//	int j = 10;
+//	int left = 0;
+//	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+//	while (left <= right)
+//	{
+//		i = (right - left) / 2 + left;
+//		if (j > arr[i])
+//		{
+//			left = i + 1;
+//		}
+//		if (j < arr[i])
+//		{
+//			right = i - 1;
+//		}
+//		if (j == arr[i])
+//		{
+//			printf("找到了,小标是%d\n",i);
+//			break;
+//		}
+//	}
+//	if (left > right)
+//	{
+//		printf("没有\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	int arr[5] = { 1, 99, 2, 3, 5 };
+//	int i = 0;
+//	int t = 0;
+//	int j = 0;
+//	for (j = 0; j < 5; j++)
+//	{
+//		for (i = 0; i < 4-j; i++)
+//		{
+//			if (arr[i]>arr[i + 1])
+//			{
+//				t = arr[i];
+//				arr[i] = arr[i + 1];
+//				arr[i + 1] = t;
+//			}
+//		}
+//	}
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	system("pause");
+//	return 0;
+//}
