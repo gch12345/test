@@ -329,6 +329,7 @@
 //	system("pause");
 //	return 0;
 //}
+//冒泡排序（复习）
 //int main()
 //{
 //	int arr[5] = { 1, 99, 2, 3, 5 };
@@ -354,3 +355,47 @@
 //	system("pause");
 //	return 0;
 //}
+//(快速排序)(第一次排完）
+int main()
+{
+	int arr[10] = { 5, 8, 9, 7, 4, 3, 2, 1, 10, 6, };
+	int k = arr[0];
+	int i = 0;
+	int t = 0;
+	int left = 1;
+	int right = 9;
+	while ()
+	while(left <= right)
+	{
+		if (arr[left] > k)
+		{
+			for (i = 0; i < 10; i++)
+			{
+				if (arr[i] == k)
+					break;
+			}
+			t = arr[i];
+			arr[i] = arr[left];
+			arr[left] = t;
+		}
+		if (arr[right] < k)
+		{
+			for (i = 0; i < 10; i++)
+			{
+				if (arr[i] == k)
+					break;
+			}
+			t = arr[i];
+			arr[i] = arr[right];
+			arr[right] = t;
+		}
+		left++;
+		right--;
+	}
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	system("pause");
+	return 0;
+}
