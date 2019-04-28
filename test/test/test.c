@@ -355,46 +355,89 @@
 //	system("pause");
 //	return 0;
 //}
-//(快速排序)(第一次排完）
+//(快速排序)(第一次排序）
+//int main()
+//{
+//	int arr[10] = { 5, 8, 9, 7, 4, 3, 2, 1, 10, 6, };
+//	int k = arr[0];
+//	int i = 0;
+//	int t = 0;
+//	int left = 1;
+//	int right = 9;
+//	while ()
+//	while(left <= right)
+//	{
+//		if (arr[left] > k)
+//		{
+//			for (i = 0; i < 10; i++)
+//			{
+//				if (arr[i] == k)
+//					break;
+//			}
+//			t = arr[i];
+//			arr[i] = arr[left];
+//			arr[left] = t;
+//		}
+//		if (arr[right] < k)
+//		{
+//			for (i = 0; i < 10; i++)
+//			{
+//				if (arr[i] == k)
+//					break;
+//			}
+//			t = arr[i];
+//			arr[i] = arr[right];
+//			arr[right] = t;
+//		}
+//		left++;
+//		right--;
+//	}
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	system("pause");
+//	return 0;
+//}
+//(插入排序)（存在bug）
 int main()
 {
-	int arr[10] = { 5, 8, 9, 7, 4, 3, 2, 1, 10, 6, };
-	int k = arr[0];
+	int arr[5] = { 5, 1, 3, 2, 4 };
 	int i = 0;
+	int j = 0;
 	int t = 0;
-	int left = 1;
-	int right = 9;
-	while ()
-	while(left <= right)
+	int k = 0;
+	int h = 0;
+	int m = 0;
+	int n = 0;
+	if (arr[0] > arr[1])
 	{
-		if (arr[left] > k)
-		{
-			for (i = 0; i < 10; i++)
-			{
-				if (arr[i] == k)
-					break;
-			}
-			t = arr[i];
-			arr[i] = arr[left];
-			arr[left] = t;
-		}
-		if (arr[right] < k)
-		{
-			for (i = 0; i < 10; i++)
-			{
-				if (arr[i] == k)
-					break;
-			}
-			t = arr[i];
-			arr[i] = arr[right];
-			arr[right] = t;
-		}
-		left++;
-		right--;
+		t = arr[0];
+		arr[0] = arr[1];
+		arr[1] = t;
 	}
-	for (i = 0; i < 10; i++)
+	for (i = 1; i < 5; i++)
 	{
-		printf("%d ", arr[i]);
+		for (k = i - 1; k >= 0; k--)
+		{
+			h = arr[i];
+			if (arr[k] < arr[i])
+			{
+				m = k + 1;
+				for (n = i -1; n > k; n--)
+				{
+					arr[n + 1] = arr[n];
+				}
+				arr[m] = h;
+				break;
+			}
+
+		}
+		for (j = 0; j < 5; j++)
+		{
+			printf("%d ", arr[j]);
+		}
+		printf("\n");
 	}
 	system("pause");
 	return 0;
