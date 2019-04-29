@@ -302,9 +302,9 @@
 //{
 //	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 //	int i = 0;
-//	int j = 10;
+//	int j = 5;
 //	int left = 0;
-//	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+//	int right = sizeof(arr) / sizeof(arr[0])-1 ;
 //	while (left <= right)
 //	{
 //		i = (right - left) / 2 + left;
@@ -312,7 +312,7 @@
 //		{
 //			left = i + 1;
 //		}
-//		if (j < arr[i])
+//		else if (j < arr[i])
 //		{
 //			right = i - 1;
 //		}
@@ -399,46 +399,48 @@
 //	system("pause");
 //	return 0;
 //}
-//(²åÈëÅÅÐò)£¨´æÔÚbug£©
-int main()
-{
-	int arr[5] = { 5, 1, 3, 2, 4 };
-	int i = 0;
-	int j = 0;
-	int t = 0;
-	int k = 0;
-	int h = 0;
-	int m = 0;
-	int n = 0;
-	if (arr[0] > arr[1])
-	{
-		t = arr[0];
-		arr[0] = arr[1];
-		arr[1] = t;
-	}
-	for (i = 1; i < 5; i++)
-	{
-		for (k = i - 1; k >= 0; k--)
-		{
-			h = arr[i];
-			if (arr[k] < arr[i])
-			{
-				m = k + 1;
-				for (n = i -1; n > k; n--)
-				{
-					arr[n + 1] = arr[n];
-				}
-				arr[m] = h;
-				break;
-			}
-
-		}
-		for (j = 0; j < 5; j++)
-		{
-			printf("%d ", arr[j]);
-		}
-		printf("\n");
-	}
-	system("pause");
-	return 0;
-}
+//(²åÈëÅÅÐò)
+//int main()
+//{
+//	int arr[5] = { 5, 1, 3, 2, 4 };
+//	int i = 0;
+//	int j = 0;
+//	int k = 0;
+//	int h = 0;
+//	int n = 0;
+//	for (i = 1; i < 5; i++)
+//	{
+//		for (k = i - 1; k >= 0; k--)
+//		{
+//			h = arr[i];
+//			if (arr[k] < arr[i])
+//			{
+//				break;
+//			}
+//		}
+//		if (k!=i-1)
+//		{
+//			for (n = i -1; n > k; n--)
+//			{
+//				arr[n + 1] = arr[n];
+//			}
+//			arr[k+1] = h;
+//		}
+//
+//		for (j = 0; j < 5; j++)
+//		{
+//			printf("%d ", arr[j]);
+//		}
+//		printf("\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int i = sizeof(arr) / sizeof(arr[0]);
+//	printf("%d", i);
+//	system("pause");
+//	return 0;
+//}
