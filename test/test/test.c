@@ -444,3 +444,55 @@
 //	system("pause");
 //	return 0;
 //}
+//(猜数字游戏)
+void menu()
+{
+	printf("*******************\n");
+	printf("***** 1.play ******\n");
+	printf("***** 0.exit ******\n");
+	printf("*******************\n");
+}
+void game()
+{
+	int a = rand()%100+1;
+	int b = 0;
+	while (1)
+	{
+		printf("请输入");
+		scanf("%d", &b);
+		if (b > a)
+			printf("你猜大了\n");
+		else if (b < a)
+			printf("你猜小了\n");
+		else 
+		{
+			printf("恭喜你\n");
+			break;
+		}
+	}
+
+}
+int main()
+{
+	int c = 0;
+	srand((unsigned int)time(0));
+	do
+	{
+		menu();
+		printf("请选择\n");
+		scanf("%d", &c);
+		switch (c)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			break;
+		default:
+			break;
+		}
+	}
+	while (c);
+	system("pause");
+	return 0;
+}
