@@ -445,54 +445,114 @@
 //	return 0;
 //}
 //(猜数字游戏)
-void menu()
-{
-	printf("*******************\n");
-	printf("***** 1.play ******\n");
-	printf("***** 0.exit ******\n");
-	printf("*******************\n");
-}
-void game()
-{
-	int a = rand()%100+1;
-	int b = 0;
-	while (1)
-	{
-		printf("请输入");
-		scanf("%d", &b);
-		if (b > a)
-			printf("你猜大了\n");
-		else if (b < a)
-			printf("你猜小了\n");
-		else 
-		{
-			printf("恭喜你\n");
-			break;
-		}
-	}
-
-}
-int main()
-{
-	int c = 0;
-	srand((unsigned int)time(0));
-	do
-	{
-		menu();
-		printf("请选择\n");
-		scanf("%d", &c);
-		switch (c)
-		{
-		case 1:
-			game();
-			break;
-		case 0:
-			break;
-		default:
-			break;
-		}
-	}
-	while (c);
-	system("pause");
-	return 0;
-}
+//void menu()
+//{
+//	printf("*******************\n");
+//	printf("***** 1.play ******\n");
+//	printf("***** 0.exit ******\n");
+//	printf("*******************\n");
+//}
+//void game()
+//{
+//	int a = rand()%100+1;
+//	int b = 0;
+//	while (1)
+//	{
+//		printf("请输入");
+//		scanf("%d", &b);
+//		if (b > a)
+//			printf("你猜大了\n");
+//		else if (b < a)
+//			printf("你猜小了\n");
+//		else 
+//		{
+//			printf("恭喜你\n");
+//			break;
+//		}
+//	}
+//
+//}
+//int main()
+//{
+//	int c = 0;
+//	srand((unsigned int)time(0));
+//	do
+//	{
+//		menu();
+//		printf("请选择\n");
+//		scanf("%d", &c);
+//		switch (c)
+//		{
+//		case 1:
+//			game();
+//			break;
+//		case 0:
+//			break;
+//		default:
+//			break;
+//		}
+//	}
+//	while (c);
+//	system("pause");
+//	return 0;
+//}
+//（二分查找）（作业）
+//int main()
+//{
+//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int left = 0;
+//	int right = 0;
+//	right = sizeof(arr) / sizeof(arr[0])-1;
+//	int a = 0;
+//	scanf("%d", &a);
+//	while (left <= right)
+//	{
+//		int b = (right - left) / 2 + left;
+//		if (arr[b] > a)
+//		{
+//			right = b-1;
+//		}
+//		else if (arr[b] < a)
+//		{
+//			left = b+1;
+//		}
+//		if(arr[b]==a)
+//		{
+//			printf("找到了，下标是%d\n", b);
+//			break;
+//		}
+//	}
+//	if (left>right)
+//	{
+//		printf("没有\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
+//（模拟登陆窗口）
+//int main()
+//{
+//	char arr1[] = { "abcdef" };
+//	int i = 0;
+//	i = 1;
+//	while (i<=3)
+//	{
+//		printf("请输入密码");
+//		char arr2[20];
+//		scanf("%s", arr2);
+//		int a = strcmp(arr1, arr2);
+//		if (a != 0)
+//			printf("第%d次输入错误,请重新输入\n",i );
+//		else
+//		{
+//			printf("输入正确，登陆成功\n");
+//			break;
+//		}
+//		i++;
+//		if (i == 4)
+//			printf("退出程序\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
+//
