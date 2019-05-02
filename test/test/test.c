@@ -555,4 +555,52 @@
 //	system("pause");
 //	return 0;
 //}
+/*(编写一个程序，可以一直接收键盘字符， 
+如果是小写字符就输出对应的大写字符，
+如果接收的是大写字符，就输出对应的小写字符，
+如果是数字不输出。
+)*/
+//int main()
+//{
+//	int ch = 0;
+//	printf("输入字符\n");
+//	while (1)
+//	{
+//		scanf("%c", &ch);
+//		if (ch >= 'a'&&ch <= 'z')
+//		{
+//			printf("%c\n", ch - 32);
+//		}
+//		if (ch >= 'A'&&ch <= 'Z')
+//		{
+//			printf("%c\n",ch+32);
+//		}
+//	}
+//	system("pause");
+//	return 0;
+//}
+//冒泡排序（复习）
+//int main()
+//{
+//	int arr[5] = { 5, 0, 99, 1, 4 };
+//	int i = 0;
+//	int j = 0;
+//	int t = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		for (j = 0; j<4 - i;j++)
+//		if (arr[j]>arr[j + 1])
+//		{
+//			t = arr[j];
+//			arr[j] = arr[j + 1];
+//			arr[j + 1] = t;
+//		}
+//	}
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	system("pause");
+//	return 0;
+//}
 //
