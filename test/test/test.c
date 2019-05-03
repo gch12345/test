@@ -604,3 +604,62 @@
 //	return 0;
 //}
 //
+//（运算器）
+int add(int a,int b)//加法
+{
+	int re = a;
+	while (b)
+	{
+		int tmp = a;
+		a = a^b;
+		b = (tmp&b) << 1;
+		re = a;
+	}
+	change(re);
+	printf("10进制为：%d", re);
+	return re;
+}
+int reduce(int a,int b)//减法
+{
+	b = add(-b, 1);
+	return add(a, b);
+}
+int change(int a)
+{
+	int arr[20] = { 0 };
+	int i = 0;
+	int j = 0;
+	while (a > 0)
+	{
+		arr[i] = a % 2;
+		i++;
+		a = a / 2;
+	}
+	for (j = i; j >=0; j--)
+		printf("%d", arr[j]);
+	printf("\n");
+	return 0;
+}
+int main()
+{
+	char op ;
+	int a = 0;
+	int b = 0;
+	printf("请输入第一个值");
+	scanf("%d", &a);
+	printf("请输入第二个值");
+	scanf("%d", &b);
+	printf("输入操作类型");
+	scanf("%s", &op);
+	switch (op)
+	{
+	case '+':
+		add(a, b);
+		break;
+	case '-':
+	    reduce(a, b);
+		break;
+	}
+	system("pause");
+	return 0;
+}
