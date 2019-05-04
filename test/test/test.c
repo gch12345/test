@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+#pragma warning(disable:4996)
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -615,49 +616,89 @@ int add(int a,int b)//加法
 		b = (tmp&b) << 1;
 		re = a;
 	}
-	change(re);
-	printf("10进制为：%d", re);
 	return re;
 }
 int reduce(int a,int b)//减法
 {
-	b = add(-b, 1);
+	b = add(~b, 1);
 	return add(a, b);
 }
-int change(int a)
+int change(int a)//二进制准换成十进制（1为负，0为正）
 {
 	int arr[20] = { 0 };
 	int i = 0;
 	int j = 0;
-	while (a > 0)
+	while (1)
 	{
+		if (a < 0)
+		{
+			a = -a;
+			j = 1;
+		}
 		arr[i] = a % 2;
-		i++;
+		i=i+1;
 		a = a / 2;
+		if (a == 0)
+		{
+			break;
+		}
+		 else if (a < 2)
+		{
+			arr[i] = 1;
+			i++;
+			break;
+		}
 	}
-	for (j = i; j >=0; j--)
-		printf("%d", arr[j]);
+	if (j == 1)
+	{
+		arr[i] = 1;
+	}
+	for (i; i >= 0; i--)
+	{
+		printf("%d", arr[i]);
+	}
+
 	printf("\n");
-	return 0;
+	return a;
 }
+
+int multiply(int a, int b)
+{
+	int ans = 0;
+	while (b)
+	{
+		if (b & 1)
+		ans = add(ans, a);
+		a = a << 1;
+		b = b >> 1;
+	}
+	return ans;
+}
+
 int main()
 {
 	char op ;
 	int a = 0;
 	int b = 0;
-	printf("请输入第一个值");
+	printf("请输入第一个值:");
 	scanf("%d", &a);
-	printf("请输入第二个值");
+	printf("请输入第二个值:");
 	scanf("%d", &b);
-	printf("输入操作类型");
-	scanf("%s", &op);
+	printf("输入操作类型:");
+	scanf("\n%c", &op);
 	switch (op)
 	{
 	case '+':
-		add(a, b);
+		printf("%d", change(add(a, b)));
 		break;
 	case '-':
-	    reduce(a, b);
+		printf("%d", change(reduce(a, b)));
+		break;
+	case '*':
+		printf("%d", change(multiply(a, b)));
+		break;
+	default:
+		printf("输入错误\n");
 		break;
 	}
 	system("pause");
