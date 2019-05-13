@@ -1224,60 +1224,142 @@
 //实现reverse（）函数完成数组元素的逆置。
 //要求：自己设计函数的参数，返回值。
 
-int* init(int* arr,int a)
-{
-	int i = 0;
-	for (i = 0; i < a; i++)
-	{
-		printf("输入arr[%d]的值", i);
-		scanf("%d", &arr[i]);
-	}
-	return arr;
-}
-int* empty(int *arr,int a)
-{
-	int i = 0;
-	for (i = 0; i < a; i++)
-	{
-		arr[i] = 0;
-	}
-	return arr;
-}
-int* reverse(int* arr,int le,int r)
-{
-	int a = r;
-	while (le < r)
-	{
-		int temp = 0;
-		temp = arr[le];
-		arr[le] = arr[r];
-		arr[r] = temp;
-		le++;
-		r--;
-	}
-	return arr;
-}
-void Printing(int *arr,int a)
-{
-	int i = 0;
-	for (i = 0; i < a; i++)
-	{
-		printf("%d ", arr[i]);
-	}
-	printf("\n");
-}
-int main()
-{
-	int arr[5] = { 0 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	int left = 0;
-	int right = sz - 1;
-	printf("初始\n");
-	Printing(init(arr, sz),sz);
-	printf("逆置 ");
-	Printing(reverse(arr, left, right),sz);
-	printf("清空 ");
-	Printing(empty(arr, sz),sz);
-	system("pause");
-	return 0;
-}
+//int* init(int* arr,int a)
+//{
+//	int i = 0;
+//	for (i = 0; i < a; i++)
+//	{
+//		printf("输入arr[%d]的值", i);
+//		scanf("%d", &arr[i]);
+//	}
+//	return arr;
+//}
+//int* empty(int *arr,int a)
+//{
+//	int i = 0;
+//	for (i = 0; i < a; i++)
+//	{
+//		arr[i] = 0;
+//	}
+//	return arr;
+//}
+//int* reverse(int* arr,int le,int r)
+//{
+//	int a = r;
+//	while (le < r)
+//	{
+//		int temp = 0;
+//		temp = arr[le];
+//		arr[le] = arr[r];
+//		arr[r] = temp;
+//		le++;
+//		r--;
+//	}
+//	return arr;
+//}
+//void Printing(int *arr,int a)
+//{
+//	int i = 0;
+//	for (i = 0; i < a; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//}
+//int main()
+//{
+//	int arr[5] = { 0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int left = 0;
+//	int right = sz - 1;
+//	printf("初始\n");
+//	Printing(init(arr, sz),sz);
+//	printf("逆置 ");
+//	Printing(reverse(arr, left, right),sz);
+//	printf("清空 ");
+//	Printing(empty(arr, sz),sz);
+//	system("pause");
+//	return 0;
+//}
+//(实现一个函数，判断一个数是不是素数。) 
+//int prime_number(int k)
+//{
+//	int i = 0;
+//	for (i = 2; i < sqrt(k); i++)
+//	{
+//		if (k%i == 0)
+//		{
+//			return 0;
+//		}
+//	}
+//	return 1;
+//}
+//int main()
+//{
+//	int a = 0;
+//	scanf("%d", &a);
+//	if ((prime_number(a) == 1))
+//	{
+//		printf("%d是素数\n", a);
+//	}
+//	else
+//		printf("%d不是素数\n", a);
+//	system("pause");
+//	return 0;
+//}
+//(快速排序（递归）)
+//void swap(int* pa, int*pb)
+//{
+//	int temp = 0;
+//	temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//void  Quick_sort(int* arr,int le,int r)
+//{
+//	int le0 = le;
+//	int r0 = r;
+//	int x = arr[le];
+//	if (le >= r)
+//	{
+//		return ;
+//	}
+//	while (le < r)
+//	{
+//		while (le < r&&x <= arr[r])
+//		{
+//			r--;
+//		}
+//		if (x>arr[r])
+//		{
+//			swap(&arr[le], &arr[r]);
+//			le++;
+//		}
+//		while (le < r&&x >= arr[le])
+//		{
+//			le++;
+//		}
+//		if (x < arr[le])
+//		{
+//			swap(&arr[le], &arr[r]);
+//			r--;
+//		}
+//	}
+//	Quick_sort(arr, le0, le - 1);
+//	Quick_sort(arr, le + 1, r0);
+//}
+//int main()
+//{
+//	int i = 0;
+//	int arr[10] = { -1, 1, 2, 3, 9, 4, 3, 2, 1, 0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int left = 0;
+//	int right = sz - 1;
+//	Quick_sort(arr, left, right);
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	system("pause");
+//	return 0;
+//}
