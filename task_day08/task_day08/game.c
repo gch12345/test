@@ -1,7 +1,7 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+
 #include"game.h"
 
-void initboard(char Board[ROW][COL], int row, int col)
+void initboard(char Board[ROW][COL], int row, int col)//初始数组
 {
 	int i = 0;
 	int j = 0;
@@ -13,7 +13,7 @@ void initboard(char Board[ROW][COL], int row, int col)
 	//memset(&board[0][0], ' ', row*col*sizeof(board[0][0]));
 }
 
-void printboard(char Board[ROW][COL], int row, int col)
+void printboard(char Board[ROW][COL], int row, int col)//打印棋盘
 {
 	int i = 0;
 	for (i = 0; i < row; i++)
@@ -43,7 +43,7 @@ void printboard(char Board[ROW][COL], int row, int col)
 
 	}
 }
-void playmove(char Board[ROW][COL], int row, int col)
+void playmove(char Board[ROW][COL], int row, int col)//玩家下棋
 {
 	printf("玩家走，请输入坐标：");
 	while (1)
@@ -71,7 +71,7 @@ void playmove(char Board[ROW][COL], int row, int col)
 	}
 }
 
-void computermove(char Board[ROW][COL], int row, int col)
+void computermove(char Board[ROW][COL], int row, int col)//电脑下棋
 {
 	printf("电脑走\n");
 	while (1)
@@ -85,74 +85,114 @@ void computermove(char Board[ROW][COL], int row, int col)
 		}
 	}
 }
-int end(char Board[ROW][COL], int row, int col)
+int end(char Board[ROW][COL], int row, int col)//玩家赢 返回‘*’；电脑赢返回‘#’；平局返回‘q’；继续下棋返回‘c’
 {
 	int i = 0;
 	int j = 0;
+	int k = 0;
 	int h = col;
+	//横着MODEL个相同棋子
 	for (i = 0; i < row; i++)
-	{
-		for (j = 0; j < col-1; j++)
+	{	
+		for (j = 0; j < col; j++)
 		{
-			if (Board[i][j] != Board[i][j + 1])
-				break;
+			int count = 1;
+			for (k = j; k < COL-1; k++)
+			{
+				if (Board[i][k] == Board[i][k + 1] && (Board[i][k] == '*' || Board[i][k] == '#'))
+					count++;
+				else
+					break;
+			}
+			if (count >= MODEL && Board[i][j] == '*')
+			{
+				return '*';
+			} 
+			if (count >= MODEL && Board[i][j] == '#')
+			{
+				return '#';
+			}
 		}
-		if (j == col - 1&&Board[i][0]=='*')
-		{
-			return '*';
-		}
-		if (j == col - 1 && Board[i][0] == '#')
-		{
-			return '#';
-		}
+		
 	}
+	//竖着MODEL个棋子
 	for (i = 0; i < col ; i++)
 	{
-		for (j = 0; j < row - 1; j++)
+		for (j = 0; j < row ; j++)
 		{
-			if (Board[j][i] != Board[j+1][i])
-				break;
-		}
-		if (j == row - 1 && Board[j][0] == '*')
+			int count = 1;
+			for (k = j; k < ROW - 1; k++)
+			{
+				if (Board[k][i] == Board[k + 1][i]&&(Board[k][i]=='*'||Board[k][i]=='#'))
+					count++;
+				else 
+					break;
+			}
+			if (count >= MODEL  && Board[j][i] == '*')
+			{
+				return '*';
+			}
+			if (count >= MODEL  && Board[j][i] == '#')
+			{
+				return '#';
+			}
+		}	
+	}
+	//右斜着MODEL个棋子
+	for (i = 0; i < row; i++)
+	{		
+		for (j = 0; j < col; j++)
 		{
-			return '*';
-		}
-		if (j == row - 1 && Board[j][0] == '#')
-		{
-			return '#';
+			int count0 = i;
+			int count = 1;
+			for (k = j; (k < COL - 1) && k < (ROW - 1); k++)
+			{
+				if (Board[count0][k] == Board[count0 + 1][k + 1] && (Board[count0][k] == '*' || Board[count0][k] == '#'))
+				{
+					count++;
+					count0++;
+				}
+				else
+					break;
+			}
+			if (count >= MODEL  && Board[count0][k] == '*')
+			{
+				return '*';
+			}
+			if (count >= MODEL  && Board[count0][k] == '#')
+			{
+				return '#';
+			}
 		}
 	}
-	for (i = 0; i < row - 1; i++)
+	//左斜着MODEL个棋子
+	for (i = 0; i < row; i++)
 	{
-		if (Board[i][i] != Board[i + 1][i + 1])
+		for (j = 0; j < col; j++)
 		{
-			break;
-		}
-		if (i == row - 2 && Board[0][0] == '*')
-		{
-			return '*';
-		}
-		if (i == row - 2 && Board[0][0] == '#')
-		{
-			return '#';
-		}
-	}
-	for (i = 0; i <row-1 ; i++)
-	{
-		if (Board[i][h - 1] != Board[i + 1][h - 2])
-		{
-			break;
-		}
-		h--;
-		if (i == row - 2 && Board[0][col] == '*')
-		{
-			return '*';
-		}
-		if (i == row - 2 && Board[0][col] == '#')
-		{
-			return '#';
+			int count0 = i;
+			int count = 1;
+			for (k = j; k>0; k--)
+			{
+				if (Board[count0][k] == Board[count0 + 1][k - 1] && (Board[count0][k] == '*' || Board[count0][k] == '#'))
+				{
+					count++;
+					count0++;
+				}
+				else 
+					break;
+			}
+			if (count >= MODEL  && Board[count0][k] == '*')
+			{
+				return '*';
+			}
+			if (count >= MODEL  && Board[count0][k] == '#')
+			{
+				return '#';
+			}
 		}
 	}
+	//棋盘被下满
 	for (i = 0; i < row; i++)
 	{
 		for (j = 0; j < col; j++)
@@ -166,18 +206,4 @@ int end(char Board[ROW][COL], int row, int col)
 		return 'q';
 	}
 	return 'c';
-}
-int Iffull(char Board[ROW][COL], int row, int col)
-{
-	int i = 0;
-	int j = 0;
-	for (i = 0; i < row; i++)
-	{
-		for (j = 0; j < col; j++)
-		{
-			if (Board[i][j] == ' ')
-				return 'g';
-		}
-	}
-	return 'q';
 }
