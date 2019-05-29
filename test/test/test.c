@@ -1308,58 +1308,58 @@
 //	return 0;
 //}
 //(¿ìËÙÅÅÐò£¨µÝ¹é£©)
-//void swap(int* pa, int*pb)
-//{
-//	int temp = 0;
-//	temp = *pa;
-//	*pa = *pb;
-//	*pb = temp;
-//}
-//void  Quick_sort(int* arr,int le,int r)
-//{
-//	int le0 = le;
-//	int r0 = r;
-//	int x = arr[le];
-//	if (le >= r)
-//	{
-//		return ;
-//	}
-//	while (le < r)
-//	{
-//		while (le < r&&x <= arr[r])
-//		{
-//			r--;
-//		}
-//		if (x>arr[r])
-//		{
-//			swap(&arr[le], &arr[r]);
-//			le++;
-//		}
-//		while (le < r&&x >= arr[le])
-//		{
-//			le++;
-//		}
-//		if (x < arr[le])
-//		{
-//			swap(&arr[le], &arr[r]);
-//			r--;
-//		}
-//	}
-//	Quick_sort(arr, le0, le - 1);
-//	Quick_sort(arr, le + 1, r0);
-//}
-//int main()
-//{
-//	int i = 0;
-//	int arr[10] = { -1, 1, 2, 3, 9, 4, 3, 2, 1, 0 };
-//	int sz = sizeof(arr) / sizeof(arr[0]);
-//	int left = 0;
-//	int right = sz - 1;
-//	Quick_sort(arr, left, right);
-//	for (i = 0; i < 10; i++)
-//	{
-//		printf("%d ", arr[i]);
-//	}
-//	system("pause");
-//	return 0;
-//}
+void swap(int* pa, int*pb)
+{
+	int temp = 0;
+	temp = *pa;
+	*pa = *pb;
+	*pb = temp;
+}
+void  Quick_sort(int* arr,int le,int r)
+{
+	int le0 = le;
+	int r0 = r;
+	int x = arr[le];
+	if (le >= r)
+	{
+		return ;
+	}
+	while (le < r)
+	{
+		while (le < r&&x <= arr[r])
+		{
+			r--;
+		}
+		if (x>arr[r])
+		{
+			swap(&arr[le], &arr[r]);
+			le++;
+		}
+		while (le < r&&x >= arr[le])
+		{
+			le++;
+		}
+		if (x < arr[le])
+		{
+			swap(&arr[le], &arr[r]);
+			r--;
+		}
+	}
+	Quick_sort(arr, le0, le - 1);
+	Quick_sort(arr, le + 1, r0);
+}
+int main()
+{
+	int i = 0;
+	int arr[10] = { -1, 1, 2, 3, 9, 4, 3, 2, 1, 0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int left = 0;
+	int right = sz - 1;
+	Quick_sort(arr, left, right);
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	system("pause");
+	return 0;
+}
