@@ -263,7 +263,7 @@ int is_left_move(char *arr, const char *p)
 	}
 	int i = 0;
 	int j = 0;
-	for (i = 1; i <= count; i++)
+	for (i = 1; i <= count; i++)//×óÐý
 	{
 		int j = 0;
 		int s = *arr;
@@ -277,29 +277,29 @@ int is_left_move(char *arr, const char *p)
 		{
 			return 1;
 		}
-		for (j = 0; j <= i; j++)
-		{
-			int k = 0;
-			int s = *(arr + count - 1);
-			while (*(arr + k + 1) != '\0')
-			{
-				*(arr + k + 1) = *(arr + k);
-				k++;
-			}
-			*arr = s;
-		}
-		if (strcmp(arr, p) == 0)
-		{
-			return 1;
-		}
 	}
+	//for (i = 1; i <= count; i++)//ÓÒÐý
+	//{
+	//	int k = 0;
+	//	int s = *(arr + count - 1);
+	//	while (*(arr + k + 1) != '\0')
+	//	{
+	//		*(arr + k + 1) = *(arr + k);
+	//		k++;
+	//	}
+	//	*arr = s;
+	//	if (strcmp(arr, p) == 0)
+	//	{
+	//		return 1;
+	//	}
+	//}
 		return 0;
 }
 
 int main()
 {
 	char arr0[] = "ABCDE";
-	char arr1[] = "CDEAB";
+	char arr1[] = "DEABC";
 	int k = 0;
 	k = is_left_move(arr0, arr1);
 	if (k == 1)
