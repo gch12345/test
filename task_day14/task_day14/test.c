@@ -1,7 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<assert.h>
+#include<string.h>
 //void Fun(int(*arr)[3], int row, int col)
 //{
 //	int i = 0;
@@ -164,45 +165,150 @@
 //	system("pause");
 //	return 0;
 //}
-int int_cmp(void *p1, void *p2)
-{
-	return (*((int*)p1) - *((int*)p2));
-}
+//int int_cmp(void *p1, void *p2)
+//{
+//	return (*((int*)p1) - *((int*)p2));
+//}
+//
+//void swap(void* p1, void* p2,int size)
+//{
+//	char temp = 0;
+//	for (int i = 0; i < size; i++)
+//	{
+//		temp = *((char*)p1 + i);
+//		*((char*)p1 + i) = *((char*)p2 + i);
+//		*((char*)p2 + i) = temp;
+//	}
+//}
+//
+//void bubble(void *arr,int count ,int size ,int (*cmp)(void* ,void*))
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < count; i++)
+//	{
+//		for (j = 0; j < count - i - 1; j++)
+//		{
+//			if (cmp((char*)arr + j*size, (char*)arr + (j + 1)*size) > 0)
+//			{
+//				swap((char*)arr + j*size, (char*)arr + (j + 1)*size, size);
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[5] = { 3, 2, 5, 4, 0 };
+//	bubble(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), int_cmp);
+//	int i = 0;
+//	for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	system("pause");
+//	return 0;
+//}
 
-void swap(void* p1, void* p2,int size)
+//实现一个函数，可以左旋字符串中的k个字符。
+//ABCD左旋一个字符得到BCDA
+//ABCD左旋两个字符得到CDAB
+
+//void left_move(char *str, int k)
+//{
+//	assert(str != NULL);
+//	int i = 0;
+//	for (i = 0; i < k; i++)
+//	{
+//		int j = 0;
+//		int s = *str;
+//		while (*(str + j) != '\0')
+//		{
+//			*(str + j)= *(str + j + 1);
+//			j++;
+//		}
+//		*(str + j - 1) = s;
+//	}
+//}
+//
+//int main()
+//{
+//	char arr[] = { "ABCDE" };
+//	int k = 0;
+//	printf("请输入要操作的个数");
+//	scanf("%d", &k);
+//	left_move(arr, k);
+//	printf("%s", arr);
+//	system("pause");
+//	return 0;
+//}
+
+//判断一个字符串是否为另外一个字符串旋转之后的字符串。
+//例如：给定s1 = AABCD和s2 = BCDAA，返回1
+//给定s1 = abcd和s2 = ACBD，返回0.
+//
+//AABCD左旋一个字符得到ABCDA
+//AABCD左旋两个字符得到BCDAA
+//
+//AABCD右旋一个字符得到DAABC
+
+int is_left_move(char *arr, const char *p)
 {
-	char temp = 0;
-	for (int i = 0; i < size; i++)
+	assert(arr != NULL&&p != NULL);
+	int count = 0;
+	char *p0 = arr;
+	while (*p0 != '\0')
 	{
-		temp = *((char*)p1 + i);
-		*((char*)p1 + i) = *((char*)p2 + i);
-		*((char*)p2 + i) = temp;
+		count++;
+		p0++;
 	}
-}
-
-void bubble(void *arr,int count ,int size ,int (*cmp)(void* ,void*))
-{
 	int i = 0;
 	int j = 0;
-	for (i = 0; i < count; i++)
+	for (i = 1; i <= count; i++)
 	{
-		for (j = 0; j < count - i - 1; j++)
+		int j = 0;
+		int s = *arr;
+		while (*(arr + j) != '\0')
 		{
-			if (cmp((char*)arr + j*size, (char*)arr + (j + 1)*size) > 0)
+			*(arr + j) = *(arr + j + 1);
+			j++;
+		}
+		*(arr + j - 1) = s;
+		if (strcmp(arr, p) == 0)
+		{
+			return 1;
+		}
+		for (j = 0; j <= i; j++)
+		{
+			int k = 0;
+			int s = *(arr + count - 1);
+			while (*(arr + k + 1) != '\0')
 			{
-				swap((char*)arr + j*size, (char*)arr + (j + 1)*size, size);
+				*(arr + k + 1) = *(arr + k);
+				k++;
 			}
+			*arr = s;
+		}
+		if (strcmp(arr, p) == 0)
+		{
+			return 1;
 		}
 	}
+		return 0;
 }
+
 int main()
 {
-	int arr[5] = { 3, 2, 5, 4, 0 };
-	bubble(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), int_cmp);
-	int i = 0;
-	for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+	char arr0[] = "ABCDE";
+	char arr1[] = "CDEAB";
+	int k = 0;
+	k = is_left_move(arr0, arr1);
+	if (k == 1)
 	{
-		printf("%d ", arr[i]);
+		printf("是\n");
+	}
+	else
+	{
+		printf("不是\n");
 	}
 	system("pause");
 	return 0;
