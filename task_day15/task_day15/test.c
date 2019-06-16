@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<assert.h>
 #include<string.h>
+#include<string.h>
 //struct Test 
 //{	int Num;  
 //	char *pcName;
@@ -124,135 +125,135 @@
 //	system("pause");
 //	return 0;
 //}
-char *MyStrcat(char* dest, const char*str)
-{
-	char*p = dest;
-	assert(dest != NULL&&str != NULL);
-	while (*dest!='\0')
-	{
-		dest++;
-	}
-	while (*str != '\0')
-	{
-		*dest = *str;
-		dest++;
-		str++;
-	}
-	return p;
-}
-int Mystrcmp(const char*str1,const char* str2)
-{
-	assert(str1 != NULL&&str2 != NULL);
-	while (*str1 == *str2)
-	{
-		if (*str1 == '\0')
-		{
-			return 0;
-		}
-		str1++;
-		str2++;
-	}
-	if (*str1 > *str2)
-	{
-		return 1;
-	}
-	else
-		return -1;
-}
-char* Mystnrcmp(char*dest, const char*src, int n)
-{
-	assert(dest != NULL&&src != NULL);
-	int i = 0;
-	char* p = dest;
-	for (i = 0; i < n; i++)
-	{
-		*dest = *src;
-		dest++;
-		src++;
-	}
-	return p;
-}
-char* MyStrncat(char* dest, const char*src, int n)
-{
-	assert(dest != NULL&&src != NULL);
-	char*p = dest;
-	while (*dest != '\0')
-	{
-		dest++;
-	}
-	int i = 0;
-	for (i = 0; i < n; i++)
-	{
-		*dest = *src;
-		dest++;
-		src++;
-	}
-	*dest = '\0';
-	return p;
-}
-int MyStrncmp(const char*str1, const char*str2, int n)
-{
-	int count = 0;
-	assert(str1 != NULL&&str2 != NULL);
-	while (*str1 == *str2&&count < n - 1)
-	{
-		if (*str1 == '\0')
-		{
-			return 0;
-		}
-		str1++;
-		str2++;
-		count++;
-	}
-	if (*str1 > *str2)
-	{
-		return 1;
-	}
-	else if (*str1 < *str2)
-	{
-		return -1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-const char* MyStrstr(const char* str1, const char* str2)
-{
-	assert(str1 != NULL&&str2 != NULL);
-	const char* s1 = str1;
-	const char* s2 = str2;
-	const char* start = str1;
-	while (*start != '\0')
-	{
-		s1 = start;
-		s2 = str2;
-		while ((*s1 != '\0')&&(*s2 != '\0')&&(*s1 == *s2))
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == '\0')
-		{
-			return start;
-		}
-		if (*s1 == '\0'&&*s2 != '\0')
-		{
-			return NULL;
-		}
-		start++;
-	}
-	return NULL;
-}
-int main()
-{
-	char* str1 = "abbbc";
-	char* str2 = "bbc";
-	const char *a = MyStrstr(str1, str2);
-	printf("%s", a);
-	system("pause");
-	return 0;
-}
+//char *MyStrcat(char* dest, const char*str)
+//{
+//	char*p = dest;
+//	assert(dest != NULL&&str != NULL);
+//	while (*dest!='\0')
+//	{
+//		dest++;
+//	}
+//	while (*str != '\0')
+//	{
+//		*dest = *str;
+//		dest++;
+//		str++;
+//	}
+//	return p;
+//}
+//int Mystrcmp(const char*str1,const char* str2)
+//{
+//	assert(str1 != NULL&&str2 != NULL);
+//	while (*str1 == *str2)
+//	{
+//		if (*str1 == '\0')
+//		{
+//			return 0;
+//		}
+//		str1++;
+//		str2++;
+//	}
+//	if (*str1 > *str2)
+//	{
+//		return 1;
+//	}
+//	else
+//		return -1;
+//}
+//char* Mystnrcmp(char*dest, const char*src, int n)
+//{
+//	assert(dest != NULL&&src != NULL);
+//	int i = 0;
+//	char* p = dest;
+//	for (i = 0; i < n; i++)
+//	{
+//		*dest = *src;
+//		dest++;
+//		src++;
+//	}
+//	return p;
+//}
+//char* MyStrncat(char* dest, const char*src, int n)
+//{
+//	assert(dest != NULL&&src != NULL);
+//	char*p = dest;
+//	while (*dest != '\0')
+//	{
+//		dest++;
+//	}
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		*dest = *src;
+//		dest++;
+//		src++;
+//	}
+//	*dest = '\0';
+//	return p;
+//}
+//int MyStrncmp(const char*str1, const char*str2, int n)
+//{
+//	int count = 0;
+//	assert(str1 != NULL&&str2 != NULL);
+//	while (*str1 == *str2&&count < n - 1)
+//	{
+//		if (*str1 == '\0')
+//		{
+//			return 0;
+//		}
+//		str1++;
+//		str2++;
+//		count++;
+//	}
+//	if (*str1 > *str2)
+//	{
+//		return 1;
+//	}
+//	else if (*str1 < *str2)
+//	{
+//		return -1;
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//const char* MyStrstr(const char* str1, const char* str2)
+//{
+//	assert(str1 != NULL&&str2 != NULL);
+//	const char* s1 = str1;
+//	const char* s2 = str2;
+//	const char* start = str1;
+//	while (*start != '\0')
+//	{
+//		s1 = start;
+//		s2 = str2;
+//		while ((*s1 != '\0')&&(*s2 != '\0')&&(*s1 == *s2))
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return start;
+//		}
+//		if (*s1 == '\0'&&*s2 != '\0')
+//		{
+//			return NULL;
+//		}
+//		start++;
+//	}
+//	return NULL;
+//}
+//int main()
+//{
+//	char* str1 = "abbbc";
+//	char* str2 = "bbc";
+//	const char *a = MyStrstr(str1, str2);
+//	printf("%s", a);
+//	system("pause");
+//	return 0;
+//}
 //int main()
 //{
 //	char dest[10] = "abcd";
@@ -284,3 +285,183 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+//char * Mystrcat(char * dest, const char * src)
+//{
+//	assert(dest != NULL&&src != NULL);
+//	char*p = dest;
+//	while (*dest != '\0')
+//	{
+//		dest++;
+//	}
+//	while (*dest++ = *src++)
+//	{
+//		;
+//	}
+//	dest = '\0';
+//	return p;
+//}
+//int main()
+//{
+//	char dest[20] = "abcd";
+//	char*src = "ef";
+//	Mystrcat(dest, src);
+//	printf("%s", dest);
+//	system("pause");
+//	return 0;
+//}
+//char *Mystnrcat(char *dest, const char *src, int n)
+//{
+//	assert(dest != NULL&&src != NULL);
+//	char *p = dest;
+//	int count = 0;
+//	while (*dest != '\0')
+//	{
+//		dest++;
+//	}
+//	while (count < n)
+//	{
+//		*dest++ = *src++;
+//		count++;
+//	}
+//	*dest = '\0';
+//	return p;
+//}
+//
+//int main()
+//{
+//	char dest[20] = "abcde";
+//	char*src = "fgh";
+//	Mystnrcat(dest, src, 10);
+//	printf("%s", dest);
+//	system("pause");
+//	return 0;
+//
+//}
+
+//char*MyStrncpy(char *dest, char *src, int n)
+//{
+//	assert(dest != NULL&&src != NULL);
+//	char *p = dest;
+//	int count = 0;
+//	while (count < n)
+//	{
+//		*dest++ = *src++;
+//		count++;
+//	}
+//	return p;
+//}
+//
+//int main()
+//{
+//	char dest[20] = "abcdef";
+//	char*src = "aaaa";
+//	MyStrncpy(dest, src, 5);
+//	printf("%s", dest);
+//	system("pause");
+//	return 0;
+//}
+
+//int MyStrcmp(char* s1, char *s2)
+//{
+//	assert(dest != NULL&&src != NULL);
+//	while (*s2 == *s1)
+//	{
+//		if (*s1 == '\0')
+//			return 0;
+//		s1++;
+//		s2++;
+//	}
+//	if (*s1 > *s2)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return -1;
+//	}
+//}
+//
+//int main()
+//{
+//	char *str1 = "bbcde";
+//	char *str2 = "cabcde";
+//	printf("%d", MyStrcmp(str1, str2));
+//	system("pause");
+//	return 0;
+//}
+
+//int MyStrncmp(char *s1, char *s2, int n)
+//{
+//	assert(s1 != NULL&&s2 != NULL);
+//	int count = 0;
+//	while (*s1 == *s2&&count < n - 1)
+//	{
+//		if (*s1 == '\0')
+//		{
+//			return 0;
+//		}
+//		s1++;
+//		s2++;
+//		count++;
+//	}
+//	if (*s1 > *s2)
+//	{
+//		return 1;
+//	}
+//	else if (*s1 < *s2)
+//	{
+//		return -1;
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//
+//int main()
+//{
+//	char *str1 = "abcde";
+//	char *str2 = "abcdef";
+//	printf("%d\n", strncmp(str1, str2, 10));
+//	printf("%d",MyStrncmp(str1, str2, 10));
+//	system("pause");
+//	return 0;
+//}
+
+ const char *Mystrstr(const char *str1, const char *str2)
+{
+	assert(str1 != NULL && str2 != NULL);
+	const char *s1 = str1;
+	const char *s2 = str2;
+	const char *start = s1;
+	while (*start != '\0')
+	{
+		s1 = start;
+		s2 = str2;
+		while (*s1 == *s2 && *s1 != '\0')
+		{
+			s1++;
+			s2++;
+		}
+		if (*s2 == '\0')
+		{
+			return start;
+		}
+		if (*s1 == '\0')
+		{
+			return NULL;
+		}
+		start++;
+	}
+	return NULL;
+}
+
+int main()
+{
+	char *str1 = "aa";
+	char *str2 = "aab";
+	printf("%s", Mystrstr(str1, str2));
+	system("pause");
+	return 0;
+}
