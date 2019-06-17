@@ -429,39 +429,76 @@
 //	return 0;
 //}
 
- const char *Mystrstr(const char *str1, const char *str2)
-{
-	assert(str1 != NULL && str2 != NULL);
-	const char *s1 = str1;
-	const char *s2 = str2;
-	const char *start = s1;
-	while (*start != '\0')
-	{
-		s1 = start;
-		s2 = str2;
-		while (*s1 == *s2 && *s1 != '\0')
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == '\0')
-		{
-			return start;
-		}
-		if (*s1 == '\0')
-		{
-			return NULL;
-		}
-		start++;
-	}
-	return NULL;
-}
+// const char *Mystrstr(const char *str1, const char *str2)
+//{
+//	assert(str1 != NULL && str2 != NULL);
+//	const char *s1 = str1;
+//	const char *s2 = str2;
+//	const char *start = s1;
+//	while (*start != '\0')
+//	{
+//		s1 = start;
+//		s2 = str2;
+//		while (*s1 == *s2 && *s1 != '\0')
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return start;
+//		}
+//		if (*s1 == '\0')
+//		{
+//			return NULL;
+//		}
+//		start++;
+//	}
+//	return NULL;
+//}
+//
+//int main()
+//{
+//	char *str1 = "aa";
+//	char *str2 = "aab";
+//	printf("%s", Mystrstr(str1, str2));
+//	system("pause");
+//	return 0;
+//}
 
+//void test(int *arr)//ok£¿
+//{} 
+//void test(int* arr[5])//ok£¿ 
+//{}
+//void test(int (*arr)[5])//ok£¿ 
+//{}
+//void test(int **arr)//ok£¿
+//{}
+//int main()
+//{   
+//	int arr[3][5] = {0};  
+//	test(arr);
+//}
+
+void * Mymemcpy(void *dest, const void *stc, int count)
+{
+	void* ret = dest;
+	int i = 0;
+	while (i < count)
+	{
+		*(char*)dest = *(char*)stc;
+		((char*)dest)++;
+		((char*)stc)++;
+		i++;
+	}
+	return ret;
+}
 int main()
 {
-	char *str1 = "aa";
-	char *str2 = "aab";
-	printf("%s", Mystrstr(str1, str2));
+	char dest[10] = "";
+	char *stc = "abcd";
+	Mymemcpy(dest, stc, 2);
+	printf("%s", dest);
 	system("pause");
 	return 0;
 }

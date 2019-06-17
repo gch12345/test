@@ -250,66 +250,108 @@
 //AABCD左旋两个字符得到BCDAA
 //
 //AABCD右旋一个字符得到DAABC
+//
+//int is_left_move(char *arr, const char *p)
+//{
+//	assert(arr != NULL&&p != NULL);
+//	int count = 0;
+//	char *p0 = arr;
+//	while (*p0 != '\0')
+//	{
+//		count++;
+//		p0++;
+//	}
+//	int i = 0;
+//	int j = 0;
+//	for (i = 1; i <= count; i++)//左旋
+//	{
+//		int j = 0;
+//		int s = *arr;
+//		while (*(arr + j) != '\0')
+//		{
+//			*(arr + j) = *(arr + j + 1);
+//			j++;
+//		}
+//		*(arr + j - 1) = s;
+//		if (strcmp(arr, p) == 0)
+//		{
+//			return 1;
+//		}
+//	}
+//	//for (i = 1; i <= count; i++)//右旋
+//	//{
+//	//	int k = 0;
+//	//	int s = *(arr + count - 1);
+//	//	while (*(arr + k + 1) != '\0')
+//	//	{
+//	//		*(arr + k + 1) = *(arr + k);
+//	//		k++;
+//	//	}
+//	//	*arr = s;
+//	//	if (strcmp(arr, p) == 0)
+//	//	{
+//	//		return 1;
+//	//	}
+//	//}
+//		return 0;
+//}
+//
+//int main()
+//{
+//	char arr0[] = "ABCDE";
+//	char arr1[] = "DEABC";
+//	int k = 0;
+//	k = is_left_move(arr0, arr1);
+//	if (k == 1)
+//	{
+//		printf("是\n");
+//	}
+//	else
+//	{
+//		printf("不是\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
 
-int is_left_move(char *arr, const char *p)
+void Reverse(char* left, char* right)
 {
-	assert(arr != NULL&&p != NULL);
-	int count = 0;
-	char *p0 = arr;
-	while (*p0 != '\0')
+	while (left < right)
 	{
-		count++;
-		p0++;
+		char temp = *left;
+		*left = *right;
+		*right = temp;
+		left++;
+		right--;
 	}
-	int i = 0;
-	int j = 0;
-	for (i = 1; i <= count; i++)//左旋
-	{
-		int j = 0;
-		int s = *arr;
-		while (*(arr + j) != '\0')
-		{
-			*(arr + j) = *(arr + j + 1);
-			j++;
-		}
-		*(arr + j - 1) = s;
-		if (strcmp(arr, p) == 0)
-		{
-			return 1;
-		}
-	}
-	//for (i = 1; i <= count; i++)//右旋
-	//{
-	//	int k = 0;
-	//	int s = *(arr + count - 1);
-	//	while (*(arr + k + 1) != '\0')
-	//	{
-	//		*(arr + k + 1) = *(arr + k);
-	//		k++;
-	//	}
-	//	*arr = s;
-	//	if (strcmp(arr, p) == 0)
-	//	{
-	//		return 1;
-	//	}
-	//}
-		return 0;
+}
+void left_move1(char *str, int k)
+{
+	Reverse(str, str + k - 1);
+	Reverse(str + k, str + strlen(str) - 1);
+	Reverse(str, str + strlen(str) - 1);
 }
 
-int main()
+int left_move(char *str1,const char *str2)
 {
-	char arr0[] = "ABCDE";
-	char arr1[] = "DEABC";
-	int k = 0;
-	k = is_left_move(arr0, arr1);
-	if (k == 1)
+	if (strlen(str1) != strlen(str2))
 	{
-		printf("是\n");
+		return 0;
+	}
+	strncat(str1, str1, strlen(str1));
+	if (strstr(str1, str2) != NULL)
+	{
+		return 1;
 	}
 	else
-	{
-		printf("不是\n");
-	}
+		return 0;
+}
+int main()
+{
+	char str1[20] = "abcd";
+	char* str2 = "abcda";
+	int a = left_move(str1,str2);
+	printf("%d\n", a);
 	system("pause");
 	return 0;
 }
