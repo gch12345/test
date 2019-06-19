@@ -480,25 +480,127 @@
 //	test(arr);
 //}
 
-void * Mymemcpy(void *dest, const void *stc, int count)
+//void * Mymemcpy(void *dest, const void *stc, int count)
+//{
+//	void* ret = dest;
+//	int i = 0;
+//	while (i < count)
+//	{
+//		*(char*)dest = *(char*)stc;
+//		((char*)dest)++;
+//		((char*)stc)++;
+//		i++;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char dest[10] = "";
+//	char *stc = "abcd";
+//	Mymemcpy(dest, stc, 2);
+//	printf("%s", dest);
+//	system("pause");
+//	return 0;
+//}
+//
+//1.一个数组中只有两个数字是出现一次，
+//其他所有数字都出现了两次。
+//找出这两个只出现一次的数字，编程实现。
+//
+//void Fun(int *arr, int len, int* x, int* y)
+//{
+//	assert(arr != NULL&&x != NULL&&y != NULL);
+//	int i = 0;
+//	int count = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		count = count ^ arr[i];
+//	}
+//	int k = 0;
+//	while ((count ^ 1) != 1)
+//	{
+//		count = count >> 1;
+//		k++;
+//	}
+//	for (i = 0; i < len; i++)
+//	{
+//		if (((arr[i] >> k) ^ 1) == 0)
+//		{
+//			*x = arr[i] ^ (*x);
+//		}
+//		else
+//		{
+//			*y = arr[i] ^ (*y);
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	int arr[10] = { 1, 2, 3, 4, 5, 4, 3, 2, 1, 0 };
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	int x = 0;
+//	int y = 0;
+//	Fun(arr, len, &x, &y);
+//	printf("%d %d", x, y);
+//	system("pause");
+//	return 0;
+//}
+//2.喝汽水，1瓶汽水1元，2个空瓶可以换一瓶汽水，
+//给20元，可以多少汽水。
+//编程实现。
+//
+
+//int main()
+//{
+//	int a = 3;
+//	int b = a;
+//	int count = a;
+//	while (b > 1)
+//	{
+//		a = b / 2;
+//		count = count + a;
+//		b = a + b % 2;
+//	}
+//	printf("%d", count);
+//	system("pause");
+//	return 0;
+//}
+//3.模拟实现strcpy
+//char *Mystrcpy(char *s1, const char *s2)
+//{
+//	assert(s1 != NULL&&s2 != NULL);
+//	char *p = s1;
+//	while (*s1++ = *s2++);
+//	return p;
+//}
+//
+//int main()
+//{
+//	char str1[20] = "";
+//	char *str2 = "abcd";
+//	printf("%s\n",Mystrcpy(str1, str2));
+//	system("pause");
+//	return 0;
+//}
+//4.模拟实现strcat
+char *Mystrcat(char* s1,char *s2)
 {
-	void* ret = dest;
-	int i = 0;
-	while (i < count)
+	assert(s1 != NULL&&s2 != NULL);
+	char *p = s1;
+	while (*s1 != '\0')
 	{
-		*(char*)dest = *(char*)stc;
-		((char*)dest)++;
-		((char*)stc)++;
-		i++;
+		s1++;
 	}
-	return ret;
+	while (*s1++ = *s2++);
+	return p;
 }
+
 int main()
 {
-	char dest[10] = "";
-	char *stc = "abcd";
-	Mymemcpy(dest, stc, 2);
-	printf("%s", dest);
+	char str1[20] = "abcd";
+	char *str2 = "abcd";
+	printf("%s\n", Mystrcat(str1, str2));
 	system("pause");
 	return 0;
 }
