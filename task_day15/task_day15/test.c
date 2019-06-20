@@ -95,7 +95,7 @@
 	//int a[4] = { 1, 2, 3, 4 };    
 	//int *ptr1 = (int *)(&a + 1);     
 	//int *ptr2 = (int *)((int)a + 1); 
-	//printf("%x,%x", ptr1[-1], *ptr2);//4  ,20 00 00 00
+	//printf("%x,%x", ptr1[-1], *ptr2);//4  ,2 00 00 00
 	//int a[3][2] = { (0, 1), (2, 3), (4, 5) };     
 	//int *p;     
 	//p = a[0];   
@@ -584,23 +584,40 @@
 //	return 0;
 //}
 //4.Ä£ÄâÊµÏÖstrcat
-char *Mystrcat(char* s1,char *s2)
-{
-	assert(s1 != NULL&&s2 != NULL);
-	char *p = s1;
-	while (*s1 != '\0')
-	{
-		s1++;
-	}
-	while (*s1++ = *s2++);
-	return p;
-}
-
-int main()
-{
-	char str1[20] = "abcd";
-	char *str2 = "abcd";
-	printf("%s\n", Mystrcat(str1, str2));
-	system("pause");
-	return 0;
-}
+//char *Mystrcat(char* s1,char *s2)
+//{
+//	assert(s1 != NULL&&s2 != NULL);
+//	char *p = s1;
+//	while (*s1 != '\0')
+//	{
+//		s1++;
+//	}
+//	while (*s1++ = *s2++);
+//	return p;
+//}
+//
+//int main()
+//{
+//	char str1[20] = "abcd";
+//	char *str2 = "abcd";
+//	printf("%s\n", Mystrcat(str1, str2));
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	char a[3][4] = { 0 }; 
+//	printf("%d\n", sizeof(a));//12
+//	printf("%d\n", sizeof(a[0][0]));//1
+//	printf("%d\n", sizeof(a[0]));//4
+//	printf("%d\n", sizeof(a[0] + 1));//4
+//	printf("%d\n", sizeof(*(a[0] + 1)));//1
+//	printf("%d\n", sizeof(a + 1)); //4
+//	printf("%d\n", sizeof(*(a + 1)));//4 
+//	printf("%d\n", sizeof(&a[0] + 1));//4
+//	printf("%d\n", sizeof(*(&a[0] + 1))); //4  
+//	printf("%d\n", sizeof(*a));//4
+//	printf("%d\n", sizeof(a[3]));//4
+//	system("pause");
+//	return 0;
+//}
