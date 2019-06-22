@@ -29,7 +29,14 @@ void start()
 			case search:
 				printf("请输入要找的姓名");
 				scanf("%s", Name1);
-				if(SearchContact(&con,Name1)==-1);
+				if (SearchContact(&con, Name1) == -1)
+				{
+					printf("没有此人");
+				}
+				else
+				{
+					printf("此人的序号是%d\n", SearchContact(&con, Name1));
+				}
 				break;
 			case del:
 				printf("请输入要删除的姓名");

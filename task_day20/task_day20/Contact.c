@@ -38,7 +38,7 @@ int SearchContact(Contact *pCon,char *name)
 	{
 		if (strcmp(name, pCon->per[i].name) == 0)
 		{
-			return i;
+			return i+1;
 		}
 	}
 	return -1;
