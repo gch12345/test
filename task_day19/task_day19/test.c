@@ -205,82 +205,119 @@
 //	system("pause");
 //	return 0;
 //}0x0113F750
-
-int cmp(void* p1, void* p2)
+//
+//int cmp(void* p1, void* p2)
+//{
+//	assert(p1 != NULL&&p2 != NULL);
+//	return (*(int*)p1 - *(int*)p2);
+//}
+//void swap(void* p1, void* p2, int size)
+//{
+//	assert(p1 != NULL&&p2 != NULL);
+//	int i = 0;
+//	for (i = 0; i < size; i++)
+//	{
+//		int temp = *(char*)p1;
+//		*(char*)p1 = *(char*)p2;
+//		*(char*)p2 = temp;
+//		((char*)p1)++;
+//		((char*)p2)++;
+//	}
+//}
+//void Myqsort(void *ptr, int count, int size, int(*comp)(void *, void *))
+//{
+//	assert(ptr != NULL&&comp != NULL);
+//	if (count > 1)
+//	{
+//		long long  a = 0;
+//		long long * p1 = &a;
+//		for (int i = 0; i < size; i++)
+//		{
+//			*((char*)p1 + i) = *((char*)ptr + i);
+//		}
+//		int i = 0;
+//		int j = count;
+//		int x = *((int*)ptr);
+//		while (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
+//		{
+//			while ((comp((char*)p1, (char*)ptr + (j - 1)*size) < 0) && ((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
+//			{
+//				j--;
+//			}
+//			if (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
+//			{
+//				for (int k = 0; k < size; k++)
+//				{
+//					*((char*)ptr + i*size + k) = *((char*)ptr + (j - 1)*size + k);
+//				}
+//				i++;
+//			}
+//			while (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size) && (comp((char*)p1, (char*)ptr + i*size) > 0))
+//			{
+//				i++;
+//			}
+//			if (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
+//			{
+//				for (int k = 0; k < size; k++)
+//				{
+//					*((char*)ptr + (j - 1)*size + k) = *((char*)ptr + i*size + k);
+//				}
+//				j--;
+//			}
+//		}
+//		for (int k = 0; k < size; k++)
+//		{
+//			*((char*)ptr + i*size + k) = *((char*)p1 + k);
+//		}
+//		Myqsort(ptr, i, size, cmp);
+//		Myqsort((char*)ptr + (i + 1)*size, count - i - 1, size, cmp);
+//	}
+//}
+//
+//int main()
+//{
+//	int arr[10] = { 56, 24, 2, 1, 5, 78, 3, 35, 6, 7 };
+//	Myqsort(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), cmp);
+//	//qsort(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), cmp);
+//	int le = sizeof(arr) / sizeof(arr[0]);
+//	for (int i = 0; i < le; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	system("pause");
+//	return 0;
+//}
+void *Mymemmove(void *dest, const void *src, int count)
 {
-	assert(p1 != NULL&&p2 != NULL);
-	return (*(int*)p1 - *(int*)p2);
-}
-void swap(void* p1, void* p2, int size)
-{
-	assert(p1 != NULL&&p2 != NULL);
-	int i = 0;
-	for (i = 0; i < size; i++)
+	assert(dest != NULL&&src != NULL);
+	void *ret = dest;
+	if (dest < src)
 	{
-		int temp = *(char*)p1;
-		*(char*)p1 = *(char*)p2;
-		*(char*)p2 = temp;
-		((char*)p1)++;
-		((char*)p2)++;
+		while (count--)
+		{
+			*(char *)dest = *(char *)src;
+			((char *)dest)++;
+			((char *)src)++;
+		}
 	}
-}
-void Myqsort(void *ptr, int count, int size, int(*comp)(void *, void *))
-{
-	assert(ptr != NULL&&comp != NULL);
-	if (count > 1)
+	else
 	{
-		long long  a = 0;
-		long long * p1 = &a;
-		for (int i = 0; i < size; i++)
+		dest = (char*)dest + count - 1;
+		src = (char*)src + count - 1;
+		while (count--)
 		{
-			*((char*)p1 + i) = *((char*)ptr + i);
+			*(char *)dest = *(char *)src;
+			((char *)dest)--;
+			((char *)src)--;
 		}
-		int i = 0;
-		int j = count;
-		int x = *((int*)ptr);
-		while (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
-		{
-			while ((comp((char*)p1, (char*)ptr + (j - 1)*size) < 0) && ((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
-			{
-				j--;
-			}
-			if (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
-			{
-				for (int k = 0; k < size; k++)
-				{
-					*((char*)ptr + i*size + k) = *((char*)ptr + (j - 1)*size + k);
-				}
-				i++;
-			}
-			while (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size) && (comp((char*)p1, (char*)ptr + i*size) > 0))
-			{
-				i++;
-			}
-			if (((char*)ptr + i*size) < ((char*)ptr + (j - 1)*size))
-			{
-				for (int k = 0; k < size; k++)
-				{
-					*((char*)ptr + (j - 1)*size + k) = *((char*)ptr + i*size + k);
-				}
-				j--;
-			}
-		}
-		for (int k = 0; k < size; k++)
-		{
-			*((char*)ptr + i*size + k) = *((char*)p1 + k);
-		}
-		Myqsort(ptr, i, size, cmp);
-		Myqsort((char*)ptr + (i + 1)*size, count - i - 1, size, cmp);
 	}
+	return ret;
 }
-
 int main()
 {
-	int arr[10] = { 56, 24, 2, 1, 5, 78, 3, 35, 6, 7 };
-	Myqsort(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), cmp);
-	//qsort(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), cmp);
-	int le = sizeof(arr) / sizeof(arr[0]);
-	for (int i = 0; i < le; i++)
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	Mymemmove(arr+2, arr, 16);
+	for (int i = 0; i < 10; i++)
 	{
 		printf("%d ", arr[i]);
 	}
