@@ -38,7 +38,7 @@ int SearchContact(Contact *pCon,char *name)
 	{
 		if (strcmp(name, pCon->per[i].name) == 0)
 		{
-			return i+1;
+			return i + 1;
 		}
 	}
 	return -1;
@@ -48,12 +48,12 @@ void DelContact(Contact *pCon, char *name)
 	assert(pCon!= NULL);
 	if (SearchContact(pCon, name) == -1)
 	{
-		printf("查无此人");
+		printf("查无此人\n");
 		return;
 	}
 	else
 	{
-		for (int i = SearchContact(pCon, name); i < pCon->usedSize - 1; i++)
+		for (int i = SearchContact(pCon, name) - 1; i < pCon->usedSize - 1; i++)
 		{
 			pCon->per[i] = pCon->per[i + 1];
 		}
@@ -64,10 +64,11 @@ void DelContact(Contact *pCon, char *name)
 void ShowContact(Contact *pCon)
 {
 	assert(pCon != NULL);
-	printf("%-20s %-10s %-10s %-11s %-15s\n", "姓名", "性别", "年龄", "电话", "地址");
-	for (int i = 0; i < pCon->usedSize; i++)
+	printf("%-5s %-20s %-10s %-10s %-11s %-15s\n","序号", "姓名", "性别", "年龄", "电话", "地址");
+	int i = 0;
+	for (i = 0; i < pCon->usedSize; i++)
 	{
-		printf("%-20s %-10s %-10d %-11s %-15s\n", pCon->per[i].name, pCon->per[i].sex, pCon->per[i].age, pCon->per[i].tele, pCon->per[i].addr);
+		printf("%-5d %-20s %-10s %-10d %-11s %-15s\n", i + 1, pCon->per[i].name, pCon->per[i].sex, pCon->per[i].age, pCon->per[i].tele, pCon->per[i].addr);
 	}
 }
 void ClearContact(Contact *pCon)
@@ -76,4 +77,11 @@ void ClearContact(Contact *pCon)
 	pCon->usedSize = 0;
 	memset(pCon->per, 0, sizeof(pCon->per));
 	printf("清空完成\n");
+}
+
+void SortContact(Contact *pCon,int (*camp)(const void* p1,const void* p2))
+{
+	assert(pCon != NULL);
+	qsort(pCon->per, pCon->usedSize, sizeof(pCon->per[0]), camp);
+	printf("排序成功\n");
 }
