@@ -85,3 +85,25 @@ void SortContact(Contact *pCon,int (*camp)(const void* p1,const void* p2))
 	qsort(pCon->per, pCon->usedSize, sizeof(pCon->per[0]), camp);
 	printf("排序成功\n");
 }
+
+void ReviseContact(Contact *pCon, char*name)
+{
+	assert(pCon != NULL);
+	if (SearchContact(pCon, name) != -1)
+	{
+		printf("请输入年龄\n");
+		scanf("%d", &(pCon->per[SearchContact(pCon, name) - 1].age));
+		printf("请输入电话号码\n");
+		scanf(" %s", pCon->per[SearchContact(pCon, name) - 1].tele);
+		printf("请输入地址\n");
+		scanf(" %s", pCon->per[SearchContact(pCon, name) - 1].addr);
+		printf("请输入性别\n");
+		scanf(" %s", pCon->per[SearchContact(pCon, name) - 1].sex);
+		printf("请输入姓名\n");
+		scanf(" %s", pCon->per[SearchContact(pCon, name) - 1].name);
+	}
+	else
+	{
+		printf("没有此人\n");
+	}
+}

@@ -15,6 +15,7 @@ enum Option
 	add,
 	search,
 	del,
+	revise,
 	show,
 	clear,
 	sort,
@@ -39,5 +40,6 @@ int SearchContact(Contact *pCon, char *name);
 void DelContact(Contact *pCon, char *name);
 void ShowContact(Contact *pCon);
 void ClearContact(Contact *pCon);
+void ReviseContact(Contact *pCon, char* name);
 void SortContact(Contact *pCon, int(*camp)(const void* p1, const void* p2));
 #endif

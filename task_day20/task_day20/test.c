@@ -3,9 +3,9 @@
 void menu()
 {
 	printf("*******1.add  ****2.search******\n");
-	printf("*******3.del  ****4.show  ******\n");
-	printf("*******5.clear****6.sort  ******\n");
-	printf("************0.exit *************\n");
+	printf("*******3.del  ****4.revise******\n");
+	printf("*******5.show ****6.clear ******\n");
+	printf("*******7.sort ****0.exit  ******\n");
 }
 int camp(const void* p1, const void* p2)
 {
@@ -47,6 +47,12 @@ void start()
 				printf("请输入要删除的姓名");
 				scanf("%s", Name2);
 				DelContact(&con,Name2);
+				break;
+			case revise:
+				printf("请输入要修改联系人的姓名\n");
+				char NAME[MAX_NAME] = { 0 };
+				scanf("%s", &NAME);
+				ReviseContact(&con,NAME);
 				break;
 			case show:
 				ShowContact(&con);
