@@ -3,15 +3,32 @@
 void InitContact(Contact *pCon)
 {
 	assert(pCon != NULL);
+	//pCon->usedSize = 0;
+	//memset(pCon->per, 0, sizeof(pCon->per));
 	pCon->usedSize = 0;
-	memset(pCon->per, 0, sizeof(pCon->per));
+	pCon->capticty = DEFAULT_SIZE;
+	pCon->per = (personlnfo*)malloc(sizeof(personlnfo)*pCon->capticty);
+	assert(pCon->per != NULL);
+	memset(pCon->per, 0, sizeof(personlnfo)*pCon->capticty);
 }
 void AddContact(Contact *pCon)
 {
-	if (pCon->usedSize == MAX_NUMPERSON)
+	if (pCon->usedSize == pCon->capticty)
 	{
-		printf("不好意思，通讯录满了\n");
-		return;
+		personlnfo* p = pCon->per;
+		p = (personlnfo*)realloc(p, sizeof(personlnfo) * 2);
+		if (p == NULL)
+		{
+			printf("不好意思，通讯录满了\n");
+			return;
+		}
+		else
+		{
+			pCon->per = p;
+			pCon->capticty *= 2;
+		}
+		/*printf("不好意思，通讯录满了\n");
+		return;*/
 	}
 	printf("请输入姓名\n");
 	scanf("%s", pCon->per[pCon->usedSize].name);
@@ -106,4 +123,12 @@ void ReviseContact(Contact *pCon, char*name)
 	{
 		printf("没有此人\n");
 	}
+}
+void Destroy(Contact *pCon)
+{
+	assert(pCon != NULL);
+	free(pCon->per);
+	pCon->per = NULL;
+	pCon->capticty = 0;
+	pCon->usedSize = 0;
 }

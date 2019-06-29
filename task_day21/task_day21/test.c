@@ -3,6 +3,7 @@
 #include<assert.h>
 #include<stdlib.h>
 #include <stddef.h>
+#include<vld.h>
 //
 //int Search(int* arr, int end,  int k)
 //{
@@ -57,56 +58,56 @@
 //	system("pause");
 //	return 0;
 //}
-
-struct S1
-{ 
-	char c1;
-	int i;
-	char c2;
-};
-struct S2
-{ 
-	char c1; //1 8 0
-	char c2; //1 8 1
-	int i;   //4 8 4-7
-};
-struct S3 
-{ 
-	double d;//8 8 0-7
-	char c;// 1 8 8
-	int i; //4 8 12-15
-};
-
-struct S4
-{
-	char c1;//1 8 0
-	struct S3 s3;//16 8 8-15
-	double d; //8 8 16-23
-};
-
-union Un2
-{
-	short c[7];//2 8 2   0-13
-	int i;//4 8 4 0-3          -----16
-};//
-int main()
-{
-	int*p = NULL;
-	printf("%d\n", sizeof(p));
-	printf("%d\n", sizeof(struct S1));//12
-	printf("%d\n", sizeof(struct S2));//8
-	printf("%d\n", sizeof(struct S3));//16
-	printf("%d\n", sizeof(struct S4));//32
-	printf("%d\n", &(((struct S1 *)0)->c1));//0
-	printf("%d\n", &(((struct S1 *)0)->i));//4
-	printf("%d\n", &(((struct S1 *)0)->c2));//8
-	printf("%d\n", offsetof(struct S1, c1));
-	printf("%d\n", offsetof(struct S1, i));
-	printf("%d\n", offsetof(struct S1, c2));
-	printf("%d\n", sizeof(union Un2));
-	system("pause");
-	return 0;
-}
+//
+//struct S1
+//{ 
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//struct S2
+//{ 
+//	char c1; //1 8 0
+//	char c2; //1 8 1
+//	int i;   //4 8 4-7
+//};
+//struct S3 
+//{ 
+//	double d;//8 8 0-7
+//	char c;// 1 8 8
+//	int i; //4 8 12-15
+//};
+//
+//struct S4
+//{
+//	char c1;//1 8 0
+//	struct S3 s3;//16 8 8-15
+//	double d; //8 8 16-23
+//};
+//
+//union Un2
+//{
+//	short c[7];//2 8 2   0-13
+//	int i;//4 8 4 0-3          -----16
+//};//
+//int main()
+//{
+//	int*p = NULL;
+//	printf("%d\n", sizeof(p));
+//	printf("%d\n", sizeof(struct S1));//12
+//	printf("%d\n", sizeof(struct S2));//8
+//	printf("%d\n", sizeof(struct S3));//16
+//	printf("%d\n", sizeof(struct S4));//32
+//	printf("%d\n", &(((struct S1 *)0)->c1));//0
+//	printf("%d\n", &(((struct S1 *)0)->i));//4
+//	printf("%d\n", &(((struct S1 *)0)->c2));//8
+//	printf("%d\n", offsetof(struct S1, c1));
+//	printf("%d\n", offsetof(struct S1, i));
+//	printf("%d\n", offsetof(struct S1, c2));
+//	printf("%d\n", sizeof(union Un2));
+//	system("pause");
+//	return 0;
+//}
 //typedef enum months
 //{
 //	JAN = 1, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -139,3 +140,60 @@ int main()
 //	day = 99999; //error  ÀàÐÍ²»Æ¥Åä
 //	
 //}
+//
+//int main()
+//{
+//	FILE *p = fopen("test.txt", "w");
+//	assert(p != NULL);
+//	fputc('b', p);
+//	fputc('i', p);
+//	fputc('t', p);
+//	fclose(p);
+//	p = NULL;
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	FILE *p = fopen("test.txt", "w");
+//	assert(p != NULL);
+//	fputc('b', p);
+//	fputc('i', p);
+//	fputc('t', p);
+//	fclose(p);
+//	p = NULL;
+//	p = fopen("test.txt", "r");
+//	assert(p != NULL);
+//	char ch = 0;
+//	while ((ch = fgetc(p)) != EOF)
+//	{
+//		printf("%c", ch);
+//	}
+//	fclose(p);
+//	p = NULL;
+//	system("pause");
+//	return 0;
+//}
+void CopyMp4(char* dest, char* src)
+{
+	FILE *fr = fopen(src, "rb");
+	FILE *fw = fopen(dest, "wb");
+	assert(fr != NULL&&fw != NULL);
+	char ch;
+	while (fread(&ch, sizeof(char), 1, fr) > 0)
+	{
+		fwrite(ch, sizeof(char), 1, fw);
+	}
+	fclose(fr);
+	fclose(fw);
+	fr = NULL;
+	fw = NULL;
+}
+
+
+int main()
+{
+	char *srcPath = "";
+	char *destPath = "";
+
+}

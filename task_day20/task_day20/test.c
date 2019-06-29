@@ -2,10 +2,10 @@
 #include"Contact.h"
 void menu()
 {
-	printf("*******1.add  ****2.search******\n");
-	printf("*******3.del  ****4.revise******\n");
-	printf("*******5.show ****6.clear ******\n");
-	printf("*******7.sort ****0.exit  ******\n");
+	printf("*******1.add  ****2.search ******\n");
+	printf("*******3.del  ****4.revise ******\n");
+	printf("*******5.show ****6.clear  ******\n");
+	printf("*******7.sort ****8.destroy******\n");
 }
 int camp(const void* p1, const void* p2)
 {
@@ -65,6 +65,9 @@ void start()
 				break;
 			case sort:
 				SortContact(&con,camp);
+				break;
+			case destroy:
+				Destroy(&con);
 				break;
 			default:
 				printf("输入无效，请重新输入\n");

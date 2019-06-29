@@ -9,6 +9,7 @@
 #define MAX_ADDR 15
 #define MAX_SEX 3
 #define MAX_NUMPERSON 1000
+#define DEFAULT_SIZE 2
 enum Option
 {
 	Exit,
@@ -19,6 +20,7 @@ enum Option
 	show,
 	clear,
 	sort,
+	destroy,
 };
 typedef struct Personlnfo
 {
@@ -30,8 +32,11 @@ typedef struct Personlnfo
 }personlnfo;
 typedef struct Contact
 {
-	personlnfo per[MAX_NUMPERSON];
+	/*personlnfo per[MAX_NUMPERSON];
+	int usedSize;*/
+	personlnfo *per;
 	int usedSize;
+	int capticty;
 }Contact;
 
 void InitContact(Contact *pCon);
@@ -42,4 +47,5 @@ void ShowContact(Contact *pCon);
 void ClearContact(Contact *pCon);
 void ReviseContact(Contact *pCon, char* name);
 void SortContact(Contact *pCon, int(*camp)(const void* p1, const void* p2));
+void Destroy(Contact *pCon);
 #endif
