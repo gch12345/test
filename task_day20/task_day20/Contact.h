@@ -10,6 +10,7 @@
 #define MAX_SEX 3
 #define MAX_NUMPERSON 1000
 #define DEFAULT_SIZE 2
+#define MAX_AGE  3
 enum Option
 {
 	Exit,
@@ -25,7 +26,7 @@ enum Option
 typedef struct Personlnfo
 {
 	char name[MAX_NAME];
-	short age;
+	char age[MAX_AGE];
 	char tele[MAX_TEL];
 	char addr[MAX_ADDR];
 	char sex[MAX_SEX];
