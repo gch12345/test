@@ -14,9 +14,8 @@ void InitContact(Contact *pCon)
 	pf = fopen("test.txt", "r");
 	if (pf != NULL)
 	{
-		while (fgetc(pf)!=EOF)
+		while ((fscanf(pf, "%s%s%s%s%s", pCon->per[pCon->usedSize].name, pCon->per[pCon->usedSize].age, pCon->per[pCon->usedSize].addr, pCon->per[pCon->usedSize].sex, pCon->per[pCon->usedSize].tele))==5)
 		{
-			fscanf(pf, "%s%s%s%s%s", pCon->per[pCon->usedSize].name, pCon->per[pCon->usedSize].age, pCon->per[pCon->usedSize].addr, pCon->per[pCon->usedSize].sex, pCon->per[pCon->usedSize].tele);
 			pCon->usedSize++;
 		}
 	}

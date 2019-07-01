@@ -10,7 +10,7 @@ void menu()
 int camp(const void* p1, const void* p2)
 {
 	assert(p1 != NULL&&p2 != NULL);
-	return (int)(*(personlnfo*)p1).age - (int)(*(personlnfo*)p2).age;
+	return strcmp((*(personlnfo*)p1).age , (*(personlnfo*)p2).age);
 }
 void start()
 {
