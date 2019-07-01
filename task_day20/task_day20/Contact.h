@@ -9,7 +9,7 @@
 #define MAX_ADDR 15
 #define MAX_SEX 3
 #define MAX_NUMPERSON 1000
-#define DEFAULT_SIZE 2
+#define DEFAULT_SIZE 10
 #define MAX_AGE  3
 enum Option
 {
@@ -39,7 +39,7 @@ typedef struct Contact
 	int usedSize;
 	int capticty;
 }Contact;
-
+int camp(const void* p1, const void* p2);
 void InitContact(Contact *pCon);
 void AddContact(Contact *pCon);
 int SearchContact(Contact *pCon, char *name);

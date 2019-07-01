@@ -10,7 +10,18 @@ void InitContact(Contact *pCon)
 	pCon->per = (personlnfo*)malloc(sizeof(personlnfo)*pCon->capticty);
 	assert(pCon->per != NULL);
 	memset(pCon->per, 0, sizeof(personlnfo)*pCon->capticty);
-
+	FILE *pf;
+	pf = fopen("test.txt", "r");
+	if (pf != NULL)
+	{
+		while (fgetc(pf)!=EOF)
+		{
+			fscanf(pf, "%s%s%s%s%s", pCon->per[pCon->usedSize].name, pCon->per[pCon->usedSize].age, pCon->per[pCon->usedSize].addr, pCon->per[pCon->usedSize].sex, pCon->per[pCon->usedSize].tele);
+			pCon->usedSize++;
+		}
+	}
+	fclose(pf);
+	pf = NULL;
 }
 void AddContact(Contact *pCon)
 {
@@ -45,19 +56,10 @@ void AddContact(Contact *pCon)
 	pf = fopen("test.txt", "a");
 	if (pf != NULL)
 	{
-		fputs(pCon->per[pCon->usedSize].name, pf);
-		fputs("  ", pf);
-		fputs(pCon->per[pCon->usedSize].age, pf);
-		fputs("  ", pf);
-		fputs(pCon->per[pCon->usedSize].addr, pf);
-		fputs("  ", pf);
-		fputs(pCon->per[pCon->usedSize].sex, pf);
-		fputs("  ", pf);
-		fputs(pCon->per[pCon->usedSize].tele, pf);
-		fputs("  ", pf);
-		fclose(pf);
-		pf = NULL;
+		fprintf(pf, "%-s\t%-s\t%-s\t%-s\t%-s\t\n", pCon->per[pCon->usedSize].name, pCon->per[pCon->usedSize].age, pCon->per[pCon->usedSize].addr, pCon->per[pCon->usedSize].sex, pCon->per[pCon->usedSize].tele);
 	}
+	fclose(pf);
+	pf = NULL;
 	pCon->usedSize++;
 }
 int SearchContact(Contact *pCon,char *name)
@@ -92,6 +94,18 @@ void DelContact(Contact *pCon, char *name)
 		{
 			pCon->per[i] = pCon->per[i + 1];
 		}
+		FILE *pf;
+		pf = fopen("test.txt", "w");
+		if (pf != NULL)
+		{
+			int i = 0;
+			for (i = 0; i < pCon->usedSize-1; i++)
+			{
+				fprintf(pf, "%-s\t%-s\t%-s\t%-s\t%-s\t\n", pCon->per[i].name, pCon->per[i].age, pCon->per[i].addr, pCon->per[i].sex, pCon->per[i].tele);
+			}
+		}
+		fclose(pf);
+		pf = NULL;
 		pCon->usedSize--;
 		printf("删除成功\n");
 	}
@@ -112,6 +126,11 @@ void ClearContact(Contact *pCon)
 	pCon->usedSize = 0;
 	memset(pCon->per, 0, sizeof(pCon->per));
 	printf("清空完成\n");
+	FILE *pf;
+	pf = fopen("test.txt", "w");
+	fclose(pf);
+	pf = NULL;
+
 }
 
 void SortContact(Contact *pCon,int (*camp)(const void* p1,const void* p2))
@@ -119,6 +138,18 @@ void SortContact(Contact *pCon,int (*camp)(const void* p1,const void* p2))
 	assert(pCon != NULL);
 	qsort(pCon->per, pCon->usedSize, sizeof(pCon->per[0]), camp);
 	printf("排序成功\n");
+	FILE *pf;
+	pf = fopen("test.txt", "w");
+	if (pf != NULL)
+	{
+		int i = 0;
+		for (i = 0; i < pCon->usedSize; i++)
+		{
+			fprintf(pf, "%-s\t%-s\t%-s\t%-s\t%-s\t\n", pCon->per[i].name, pCon->per[i].age, pCon->per[i].addr, pCon->per[i].sex, pCon->per[i].tele);
+		}
+	}
+	fclose(pf);
+	pf = NULL;
 }
 
 void ReviseContact(Contact *pCon, char*name)
@@ -141,6 +172,18 @@ void ReviseContact(Contact *pCon, char*name)
 	{
 		printf("没有此人\n");
 	}
+	FILE *pf;
+	pf = fopen("test.txt", "w");
+	if (pf != NULL)
+	{
+		int i = 0;
+		for (i = 0; i < pCon->usedSize; i++)
+		{
+			fprintf(pf, "%-s\t%-s\t%-s\t%-s\t%-s\t\n", pCon->per[i].name, pCon->per[i].age, pCon->per[i].addr, pCon->per[i].sex, pCon->per[i].tele);
+		}
+	}
+	fclose(pf);
+	pf = NULL;
 }
 void Destroy(Contact *pCon)
 {
