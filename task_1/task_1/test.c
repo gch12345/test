@@ -10,8 +10,8 @@ void MUNE()
 void test()
 {
 	int input = 0;
-	Momory Mom_Block[Mom_Block_NUM] = 0;
-	Cache Cache_Block[Cache_Block_NUM] = 0;
+	Momory Mom_Block[Mom_Block_NUM];
+	Cache Cache_Block[Cache_Block_NUM];
 	void Init_Momory(Mom_Block);
 	void Init_Cache(Cache_Block);
 	do
@@ -24,10 +24,15 @@ void test()
 		case 1:
 			printf("请输入内存地址:");
 			int Add = 0;
-			scanf("%x", Add);
+			scanf("%d", &Add);
+			while(Add >= Mom_Block_NUM)
+			{
+				printf("输入错误,请输入有效地址:");
+				scanf("%d", &Add);
+			}
 			if (read_Cache(Cache_Block, Add) == 0)
 			{
-
+				read_Mom(Mom_Block, Add);
 			}
 			break;
 		default:
@@ -37,9 +42,8 @@ void test()
 }
 int main()
 {
-	
-
-
+	srand((unsigned)time(NULL));
+	test();
 	system("pause");
 	return 0;
 }
