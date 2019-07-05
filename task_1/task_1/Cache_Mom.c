@@ -3,10 +3,10 @@ void Init_Momory(Momory*p)
 {
 	assert(p != NULL);
 	FILE *pf;
-	pf = fopen("momory.txt", "r");
+	pf = fopen("momory.txt", "r+");
 	if (pf != NULL)
 	{
-		while ((fscanf(pf, "%u%d%d%d%d", p->add, p->Data[0], p->Data[1], p->Data[2], p->Data[3]) == 5))
+		while ((fscanf(pf, "%u%d%d%d%d", &(p->add), &(p->Data[0]), &(p->Data[1]), &(p->Data[2]),&(p->Data[3]))==5))
 		{
 			p++;
 		}
@@ -21,7 +21,7 @@ void Init_Cache(Cache*p)
 	pf = fopen("cache.txt", "r");
 	if (pf != NULL)
 	{
-		while ((fscanf(pf, "%u%d%d%d%d", p->add, p->Data[0], p->Data[1], p->Data[2], p->Data[3]) == 5))
+		while ((fscanf(pf, "%u%d%d%d%d", &(p->add), &(p->Data[0]), &(p->Data[1]), &(p->Data[2]), &(p->Data[3])) == 5))
 		{
 			p++;
 		}
@@ -57,10 +57,11 @@ unsigned int read_Mom(Momory*p, unsigned int Add)
 	unsigned int block = Add >> 2;
 	unsigned int num = Add << 30;
 	num = num >> 30;
-	if ((p + i)->add == block)
+	while ((p + i)->add != block)
 	{
-		printf("%d\n", (p + i)->Data[num]);
+		i++;
 	}
+	printf("%d\n", (p + i)->Data[num]);
 	return block;
 }
 
@@ -81,7 +82,7 @@ void storage_Cache(Momory*p, Cache* cp, unsigned int block)
 			(cp + group * 2 + rand_num)->Data[i] = (p + block)->Data[i];
 		}
 		int i = 0;
-		while (i<Mom_Block_NUM)
+		while (i<Cache_Block_NUM)
 		{
 			fprintf(pf, "%-u\t%-d\t%-d\t%-d\t%-d\t\n", (cp + i)->add, (cp + i)->Data[0], (cp + i)->Data[1], (cp + i)->Data[2], (cp + i)->Data[3]);
 			i++;

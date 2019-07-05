@@ -13,14 +13,12 @@ typedef struct Cache
 {
 	unsigned int add;
 	int Data[Data_NUM];
-	int usedSize;
 }Cache;
 
 typedef struct Momory
 {
 	unsigned int add;
 	int Data[Data_NUM];
-	int usedSize;
 }Momory;
 
 void Init_Momory(Momory*p);

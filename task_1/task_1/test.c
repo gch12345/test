@@ -12,8 +12,8 @@ void test()
 	int input = 0;
 	Momory Mom_Block[Mom_Block_NUM];
 	Cache Cache_Block[Cache_Block_NUM];
-	void Init_Momory(Mom_Block);
-	void Init_Cache(Cache_Block);
+	Init_Momory(Mom_Block);
+	Init_Cache(Cache_Block);
 	do
 	{
 		MUNE();
