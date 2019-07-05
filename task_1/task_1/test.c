@@ -21,19 +21,29 @@ void test()
 		scanf("%d", &input);
 		switch (input)
 		{
+			unsigned int Add = 0;
 		case 1:
 			printf("请输入内存地址:");
-			int Add = 0;
 			scanf("%d", &Add);
-			while(Add >= Mom_Block_NUM)
+			while (Add >= Mom_Block_NUM*Data_NUM)
 			{
 				printf("输入错误,请输入有效地址:");
 				scanf("%d", &Add);
 			}
 			if (read_Cache(Cache_Block, Add) == 0)
 			{
-				read_Mom(Mom_Block, Add);
+				unsigned int re = read_Mom(Mom_Block, Add);
+				storage_Cache(Mom_Block, Cache_Block, re);
 			}
+			break;
+		case 2:
+			printf("请输入要修改的地址->");
+			scanf("%d", &Add);
+			printf("\n");
+			printf("请输入数据->");
+			unsigned int data = 0;
+			scanf("%d", &data);
+			storage_Mom(Mom_Block, data, Add);
 			break;
 		default:
 			break;

@@ -11,22 +11,22 @@
 #define Cache_Block_NUM 8
 typedef struct Cache
 {
-	int add;
+	unsigned int add;
 	int Data[Data_NUM];
 	int usedSize;
 }Cache;
 
 typedef struct Momory
 {
-	int add;
+	unsigned int add;
 	int Data[Data_NUM];
 	int usedSize;
 }Momory;
 
 void Init_Momory(Momory*p);
 void Init_Cache(Cache*p);
-int read_Cache(Cache*p, int Add);
-void read_Mom(Momory*p, int Add);
-void storage_Cache(Momory*p, Cache* cp, int *data, int Add);
-void storage_Mom(Cache*p, int data, int Add);
+int read_Cache(Cache*p, unsigned int Add);
+unsigned int read_Mom(Momory*p, unsigned int Add);
+void storage_Cache(Momory*p, Cache* cp, unsigned int block);
+void storage_Mom(Momory*p, int data, unsigned int Add);
 #endif
