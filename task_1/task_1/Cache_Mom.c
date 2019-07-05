@@ -38,12 +38,12 @@ int read_Cache(Cache*p, unsigned int Add)
 	group = group >> 30;
 	unsigned int num = Add << 30;
 	num = num >> 30;
-	if ((p + group * 2)->add == Add >> 4)
+	if ((p + group * 2)->add == (Add >> 4))
 	{
 		printf("%d\n", (p + group * 2)->Data[num]);
 		return 1;
 	}
-	if ((p + group * 2 + 1)->add == Add >> 4)
+	if ((p + group * 2 + 1)->add == (Add >> 4))
 	{
 		printf("%d\n", (p + group * 2 + 1)->Data[num]);
 		return 1;
@@ -65,7 +65,7 @@ unsigned int read_Mom(Momory*p, unsigned int Add)
 	return block;
 }
 
-void storage_Cache(Momory*p, Cache* cp, unsigned int block)
+void mod_Cache(Momory*p, Cache* cp, unsigned int block)
 {
 	assert(p != NULL);
 	FILE* pf;
@@ -73,13 +73,34 @@ void storage_Cache(Momory*p, Cache* cp, unsigned int block)
 	if (pf != NULL)
 	{
 		int rand_num = rand() % 2;
-		int arr[Data_NUM] = { 0 };
-		unsigned int group = block << 28;
+		unsigned int group = block << 30;
 		group = group >> 30;
-		(cp + group * 2 + rand_num)->add = block;
-		for (int i = 0; i < Data_NUM; i++)
+		if (((cp + group * 2 + 1)->sign == 1) && ((cp + group * 2 )->sign == 1))
 		{
-			(cp + group * 2 + rand_num)->Data[i] = (p + block)->Data[i];
+			
+			(cp + group * 2 + rand_num)->add = (block >> 2);
+			for (int i = 0; i < Data_NUM; i++)
+			{
+				(cp + group * 2 + rand_num)->Data[i] = (p + block)->Data[i];
+			}
+		}
+		else if (((cp + group * 2 + 1)->sign != 1) && ((cp + group * 2)->sign == 1))
+		{
+			(cp + group * 2 + 1)->add = (block >> 2);
+			for (int i = 0; i < Data_NUM; i++)
+			{
+				(cp + group * 2 + 1)->Data[i] = (p + block)->Data[i];
+			}
+			(cp + group * 2 + 1)->sign = 1;
+		}
+		else
+		{
+			(cp + group * 2)->add = (block >> 2);
+			for (int i = 0; i < Data_NUM; i++)
+			{
+				(cp + group * 2)->Data[i] = (p + block)->Data[i];
+			}
+			(cp + group * 2)->sign = 1;
 		}
 		int i = 0;
 		while (i<Cache_Block_NUM)
@@ -92,7 +113,7 @@ void storage_Cache(Momory*p, Cache* cp, unsigned int block)
 	pf = NULL;
 }
 
-void storage_Mom(Momory*p, int data, unsigned int Add)
+void mod_Mom(Momory*p, int data, unsigned int Add)
 {
 	assert(p != NULL);
 	FILE* pf;
@@ -112,6 +133,35 @@ void storage_Mom(Momory*p, int data, unsigned int Add)
 		{
 			fprintf(pf, "%-u\t%-d\t%-d\t%-d\t%-d\t\n", (p + i)->add, (p + i)->Data[0], (p + i)->Data[1], (p + i)->Data[2], (p + i)->Data[3]);
 			i++;
+		}
+	}
+	fclose(pf);
+	pf = NULL;
+}
+void syn_cache(Cache*p, int data, unsigned int Add)
+{
+	assert(p != NULL);
+	FILE* pf;
+	pf = fopen("cache.txt", "w");
+	if (pf != NULL)
+	{
+		int i = 0;
+		unsigned int cache_add = Add >> 4;
+		for (i = 0; i < Cache_Block_NUM; i++)
+		{
+			if (cache_add == (p + i)->add)
+			{
+				unsigned int num = Add << 30;
+				num = num >> 30;
+				(p + i)->Data[num] = data;
+				int i = 0;
+				while (i<Cache_Block_NUM)
+				{
+					fprintf(pf, "%-u\t%-d\t%-d\t%-d\t%-d\t\n", (p + i)->add, (p + i)->Data[0], (p + i)->Data[1], (p + i)->Data[2], (p + i)->Data[3]);
+					i++;
+				}
+				break;
+			}
 		}
 	}
 	fclose(pf);
