@@ -11,22 +11,22 @@
 #define Cache_Block_NUM 8
 typedef struct Cache
 {
-	unsigned int add;
-	int Data[Data_NUM];
-	int sign;
+	unsigned int add;//行标记
+	int Data[Data_NUM];//行的4个字
+	int sign;//数据是否有效
 }Cache;
 
 typedef struct Momory
 {
-	unsigned int add;
-	int Data[Data_NUM];
+	unsigned int add;//块号
+	int Data[Data_NUM];//块的4个字
 }Momory;
 
 void Init_Momory(Momory*p);
 void Init_Cache(Cache*p);
-int read_Cache(Cache*p, unsigned int Add);
+int read_Cache(Cache*p, unsigned int Add, int sign);
 unsigned int read_Mom(Momory*p, unsigned int Add);
-void mod_Cache(Momory*p, Cache* cp, unsigned int block);
+void replace_Cache(Momory*p, Cache* cp, unsigned int block);
 void mod_Mom(Momory*p, int data, unsigned int Add);
-void syn_cache(Cache*p, int data, unsigned int Add);
+void mod_Cache(Cache*p, int data, unsigned int Add);
 #endif
