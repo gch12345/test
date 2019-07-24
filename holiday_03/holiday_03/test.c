@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<assert.h>
+#include<vld.h>
 //int main()
 //{
 //	//int *p = NULL;
@@ -83,6 +84,17 @@ Node*search_node(Node* head,int k)
 	}
 	return p1;
 }
+void Delect(Node*head,int k)
+{
+	assert(head != NULL);
+	while (k + 1)
+	{
+		Node*p = head->next;
+		free(head);
+		head = p;
+		k--;
+	}
+}
 int main()
 {
 	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -95,6 +107,6 @@ int main()
 		printf("%d\n", node->data);
 		break;
 	}
-	system("pause");
+	Delect(head, sizeof(arr) / sizeof(int));
 	return 0;
 }
