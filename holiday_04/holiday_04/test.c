@@ -75,33 +75,40 @@ Node* create(int *arr,int len)
 Node*Inversion(Node*head)
 {
 	assert(head != NULL);
-	Node*p = head;
+	Node*p = head->Next;
+	head->Next = NULL;
 	Node*q = p;
-	int i = 0;
-	while (p->Next != NULL)
+	while (q)
 	{
-		if (i == 0)
-		{
-			p = p->Next;
-			q->Next = NULL;
-			p->Next = q;
-			i++;
-		}
-		else
-		{
-			q = p;
-			p = p->Next;
-			p->Next = q;
-		}
+		p = q;
+		q = q->Next;
+		p->Next = head;
+		head = p;
 	}
-	return q;
+	return head;
+}
+void Free(Node*p)
+{
+	assert(p != NULL);
+	Node*temp = p;
+	while (p != NULL)
+	{
+		temp = p->Next;
+		free(p);
+		p = temp;
+	}
 }
 int main()
 {
 	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	Node* p = Inversion(create(arr, sizeof(arr) / sizeof(int)));
+	Node* head = p;
 	for (int i = 0; i < sizeof(arr) / sizeof(int); i++)
 	{
-		printf("%d ", (Inversion(create(arr, sizeof(arr) / sizeof(int))) + i)->data);
+		printf("%d ", p->data);
+		p = p->Next;
+		//printf("%d ", (Inversion(create(arr, sizeof(arr) / sizeof(int))) + i)->data);
 	}
+	Free(head);
 	return 0;
 }
