@@ -64,10 +64,89 @@
 //	printf("%d\n", max);
 //	return 0;
 //}
+//int main()
+//{
+//	char str1[] = "abc";
+//	char str2[] = { 'a', 'b', 'c' };
+//	char* s1 = "abc";
+//	char* s2 = "abc";
+//}
+//int main()
+//{
+//	char*str[3] = { "stra", "strb", "strc" };
+//	char*p = str[0];
+//	int i = 0;
+//	while (i < 3)
+//	{
+//		printf("%s ", p++);
+//		i++;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int x[] = { 1, 2, 3, 4, 5 };
+//	int*p = x;
+//	p += 2;
+//	printf("%d", *p++);
+//	return 0;
+//}
+//int main()
+//{
+//	char buffer[6] = { 0 };
+//	/*char*s = "Holle World!";
+//	for (int i = 0; i < sizeof(buffer)-1; i++)
+//	{
+//		buffer[i] = *(s + i);
+//	}*/
+//	printf("%s", buffer);
+//	return 0;
+//}
+//int main()
+//{
+//	char a[1000];
+//	int i;
+//	for (i = 0; i < 1000; i++)
+//	{
+//		a[i] = (char)(-1 - i);
+//	}
+//	printf("%d\n", strlen(a));
+//	//int i = 1;
+//	//printf("%d,%d", sizeof(i++), i);
+//	return 0;
+//}
+int fun(char*arr)
+{
+	assert(arr != NULL);
+	int len = strlen(arr);
+	int count[256] = { 0 };
+	for (int i = 0; i < len; i++)
+	{
+		int k = (unsigned int)arr[i];
+		count[k]++;
+	}
+	int i = 0;
+	while (i<256)
+	{
+		if (count[i] == 1)
+		{
+			return i;
+		}
+		i++;
+	}
+	return -1;
+}
 int main()
 {
-	char str1[] = "abc";
-	char str2[] = { 'a', 'b', 'c' };
-	char* s1 = "abc";
-	char* s2 = "abc";
+	char arr[] = "aabccdeff";
+	int re = fun(arr);
+	if (re != -1)
+	{
+		printf("%c\n", re);
+	}
+	else
+	{
+		printf("ц╩сп\n");
+	}
+	return 0;
 }
