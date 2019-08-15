@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<math.h>
 //int main()
 //{
 //	unsigned short i = 0;
@@ -188,3 +189,137 @@
 //	system("pause");
 //	return 0;
 //}
+//#define N 3
+//#define Y(n) ((N+1)*n)
+//int main()
+//{
+//	int x = 2 * (N + Y(5 + 1));
+//	printf("%d\n", x);
+//	int i = 6;
+//	int  _s = 9;
+//	char ch = -1;
+//	printf("%d\n", ch);
+//	double a = (double)(10 / 4 * 4);
+//	float b = (float)(10 / 4 * 4);
+//	printf("%f\n", a);
+//	printf("%f\n", b);
+//	if (i <= 6)
+//		printf("holle\n");
+//	else
+//		printf("bye\n");
+//	system("pause");
+//	return 0;
+//}
+//int main()
+//{
+//	/*int a, b = 0;
+//	int i = (a = 2, b = 5, a++, b++, a + b);
+//	printf("%d\n", i);
+//*/
+//	int i, x, y;
+//	i = x = y = 0;
+//	do{
+//		++i;
+//		if (i % 2)
+//			x += i, i++;
+//		y += i++;
+//	} while (i <= 7);
+//	double z = pow(2, -1);
+//	printf("%d,%d,%d,%f\n", i, x, y, z);
+//	system("pause");
+//	return 0;
+//}
+//int fun(int a)
+//{
+//	if (a > 0 && ((a&(a - 1)) == 0))
+//	{
+//		return 1;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 1024;
+//	int x = fun(a);
+//	if (x == 1)
+//	{
+//		printf("ÊÇ\n");
+//	}
+//	else
+//	{
+//		printf("²»ÊÇ\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
+//void fun(char *str)
+//{
+//	char* p0 = str;
+//	char* p1 = str;
+//	char* p2 = str;
+//	while (*p1 != '\0')
+//	{
+//		p2++;
+//		char count = '1';
+//		while (*p1 == *p2)
+//		{
+//			count++;
+//			p2++;
+//		}
+//		if (count == '1')
+//		{
+//			*p0 = *p1;
+//			p0++;
+//		}
+//		else
+//		{
+//			*p0 = count;
+//			*(p0 + 1) = *(p1 + 1);
+//			p0 = p0 + 2;
+//		}
+//		p1 = p2;
+//	}
+//	*p0 = '\0';
+//}
+//int main()
+//{
+//	char str[] = "aabdbbccc";
+//	fun(str);
+//	printf("%s\n", str);
+//	system("pause");
+//	return 0;
+//}
+//int fun(int x)
+//{
+//	int count = 0;
+//	while (x)
+//	{
+//		count++;
+//		x = x&(x - 1);
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	printf("%d\n", fun(2019));
+//	system("pause");
+//	return 0;
+//}
+int fun(int a)
+{
+	int b = 0;
+	static int c = 3;
+	a = c++, b++;
+	return a;
+}
+int main()
+{
+	int a = 2, i, k;
+	for (i = 0; i < 2; i++)
+	{
+		k = fun(a++);
+	}
+	printf("%d\n", k);
+	system("pause");
+	return 0;
+}
