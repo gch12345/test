@@ -92,30 +92,99 @@
 //	system("pause");
 //	return 0;
 //}
-void fun(int*arr, int*x, int*y, int k, int len)
-{
-	int i = 0;
-	while ((arr[i] + arr[len - 1] != k) && (i < len - 1))
-	{
-		if (arr[i] + arr[len - 1] > k)
-		{
-			len--;
-		}
-		else
-		{
-			i++;
-		}
-	}
-	*y = --len;
-	*x = i;
-}
-int main()
-{
-	int arr[] = { 1, 3, 6, 9, 10 };
-	int x = 0;
-	int y = 0;
-	fun(arr, &x, &y,13 ,sizeof(arr) / sizeof(int));
-	printf("%d,%d",x, y);
-	system("pause");
-	return 0;
-}
+//void fun(int*arr, int*x, int*y, int k, int len)
+//{
+//	int i = 0;
+//	while ((arr[i] + arr[len - 1] != k) && (i < len - 1))
+//	{
+//		if (arr[i] + arr[len - 1] > k)
+//		{
+//			len--;
+//		}
+//		else
+//		{
+//			i++;
+//		}
+//	}
+//	*y = --len;
+//	*x = i;
+//}
+//int main()
+//{
+//	int arr[] = { 1, 3, 6, 9, 10 };
+//	int x = 0;
+//	int y = 0;
+//	fun(arr, &x, &y,13 ,sizeof(arr) / sizeof(int));
+//	printf("%d,%d",x, y);
+//	system("pause");
+//	return 0;
+//}
+//void fun(int*arr, int row, int col, int k)
+//{
+//	int r = 0;
+//	int c = col - 1;
+//	while (r <= row - 1 && c >= 0)
+//	{
+//		if (arr[r*col + c] > k)
+//		{
+//			c--;
+//		}
+//		else if (arr[r*col + c] < k)
+//		{
+//			r++;
+//		}
+//		else
+//		{
+//			printf("´æÔÚ\n");
+//			return
+//		}
+//	}
+//	printf("²»´æÔÚ\n");
+//	return;
+//}
+//int main()
+//{
+//	int arr[4][4] = { 1, 2, 8, 9,
+//				  	  2, 4, 9, 12,
+//					  4, 7, 10, 13,
+//					  6, 8, 11, 15 };
+//	fun((int*)arr, 4, 4, 15);
+//	system("pause");
+//	return 0;
+//}
+//#define ROW 3
+//void fun(int arr[][ROW])
+//{
+//	int row = 0;
+//	int col = ROW / 2;
+//	arr[row][col] = 1;
+//	for (int i = 2; i <= ROW*ROW; i++)
+//	{
+//		if (arr[(row - 1 + ROW) % ROW][(col + 1) % ROW] == 0)
+//		{
+//			arr[(row - 1 + ROW) % ROW][(col + 1) % ROW] = i;
+//			row = (row - 1 + ROW) % ROW;
+//			col = (col + 1) % ROW;
+//		}
+//		else
+//		{
+//			arr[(row + 1) % ROW][col] = i;
+//			row = (row + 1) % ROW;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[ROW][ROW] = { 0 };
+//	fun(arr);
+//	for (int i = 0; i < ROW; i++)
+//	{
+//		for (int j = 0; j < ROW; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
