@@ -305,21 +305,62 @@
 //	system("pause");
 //	return 0;
 //}
-int fun(int a)
+//int fun(int a)
+//{
+//	int b = 0;
+//	static int c = 3;
+//	a = c++, b++;
+//	return a;
+//}
+//int main()
+//{
+//	int a = 2, i, k;
+//	for (i = 0; i < 2; i++)
+//	{
+//		k = fun(a++);
+//	}
+//	printf("%d\n", k);
+//	system("pause");
+//	return 0;
+//}
+//int fun(int n)
+//{
+//	if (n <= 2)
+//	{
+//		return n;
+//	}
+//	return fun(n - 1) + fun(n - 2);
+//}
+//int main()
+//{
+//	int n = 4;
+//	printf("%d\n", fun(n));
+//	system("pause");
+//	return 0;
+//}
+void Move(char pos1, char pos2)
 {
-	int b = 0;
-	static int c = 3;
-	a = c++, b++;
-	return a;
+	printf("%c->%c ", pos1, pos2);
+}
+void Hanota(int n, char pos1, char pos2, char pos3)
+{
+	if (n == 1)
+	{
+		Move(pos1, pos3);
+	}
+	else
+	{
+		Hanota(n - 1, pos1, pos3, pos2);
+		Move(pos1, pos3);
+		Hanota(n - 1, pos2, pos1, pos3);
+	}
 }
 int main()
 {
-	int a = 2, i, k;
-	for (i = 0; i < 2; i++)
-	{
-		k = fun(a++);
-	}
-	printf("%d\n", k);
+	char pos1 = 'A';
+	char pos2 = 'B';
+	char pos3 = 'C';
+	Hanota(3, pos1, pos2, pos3);
 	system("pause");
 	return 0;
 }
