@@ -21,35 +21,35 @@
 //	}
 //	return re;
 //}
-int fun(int*arr, int len)
-{
-	assert(arr != NULL);
-	int sum = arr[0];
-	int max = arr[0];
-	for (int i = 1; i < len; i++)
-	{
-		if (sum < 0)
-		{
-			sum = arr[i];
-		}
-		else
-		{
-			sum += arr[i];
-		}
-		if (max < sum)
-		{
-			max = sum;
-		}
-	}
-	return max;
-}
-int main()
-{
-	int arr[] = { 1, -2, 3, 10, -4, 7, 2, -5 };
-	printf("%d\n", fun(arr, sizeof(arr) / sizeof(arr[0])));
-	system("pause");
-	return 0;
-}
+//int fun(int*arr, int len)
+//{
+//	assert(arr != NULL);
+//	int sum = arr[0];
+//	int max = arr[0];
+//	for (int i = 1; i < len; i++)
+//	{
+//		if (sum < 0)
+//		{
+//			sum = arr[i];
+//		}
+//		else
+//		{
+//			sum += arr[i];
+//		}
+//		if (max < sum)
+//		{
+//			max = sum;
+//		}
+//	}
+//	return max;
+//}
+//int main()
+//{
+//	int arr[] = { 1, -2, 3, 10, -4, 7, 2, -5 };
+//	printf("%d\n", fun(arr, sizeof(arr) / sizeof(arr[0])));
+//	system("pause");
+//	return 0;
+//}
 //char fun(char*str)
 //{
 //	assert(str != NULL);
@@ -74,6 +74,41 @@ int main()
 //{
 //	char*str = "abaccdff";
 //	printf("%c",fun(str));
+//	system("pause");
+//	return 0;
+//}
+//char* DeleteRepeateChar(char*str1, char*str2)
+//{
+//	assert(str1 != NULL&&str2 != NULL);
+//	int arr[256] = { 0 };
+//	while (*str2 != '\0')
+//	{
+//		arr[*str2] = 1;
+//		str2++;
+//	}
+//	char*q = str1;
+//	char*p = str1;
+//	while (*q != '\0')
+//	{
+//		if (arr[*q] != 1)
+//		{
+//			*p = *q;
+//			q++;
+//			p++;
+//		}
+//		else
+//		{
+//			q++;
+//		}
+//	}
+//	*p = '\0';
+//	return str1;
+//}
+//int main()
+//{
+//	char str1[] = "Welcome to cvte";
+//	char str2[] = "come";
+//	printf("%s\n", DeleteRepeateChar(str1, str2));
 //	system("pause");
 //	return 0;
 //}
