@@ -221,3 +221,39 @@
 		 return l1;
 	 }
  }
+ int lengthOfLongestSubstring(char * s){
+	 int count = 0;
+	 int re = 0;
+	 char arr[256] = { 0 };
+	 char*p = s;
+	 int c = 0;
+	 while (*s != '\0')
+	 {
+		 if (arr[*s] == 1)
+		 {
+			 int i = 1;
+			 arr[*s] = 0;
+			 while (*s != *(s - i))
+			 {
+				 arr[*(s - i)] = 0;
+				 i++;
+			 }
+			 s = s - i + 1;
+			 count = 0;
+
+			 continue;
+		 }
+		 else
+		 {
+			 arr[*s] = 1;
+			 s++;
+			 count++;
+		 }
+
+		 if (re<count)
+		 {
+			 re = count;
+		 }
+	 }
+	 return re;
+ }
