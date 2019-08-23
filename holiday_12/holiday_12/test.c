@@ -257,30 +257,118 @@
 	// }
 	// return re;
  //}
-
-int lengthOfLongestSubstring(char * s)
+//
+//int lengthOfLongestSubstring(char * s)
+//{
+//	int arr[256] = { 0 };
+//	int first = 1;
+//	int len = 0;
+//	int num = 1;
+//	int max_len = 0;
+//	while (*s != '\0')
+//	{
+//		if (arr[*s] != 0)
+//		{
+//			if (first <= arr[*s])
+//			{
+//				len = num - first;
+//				first = arr[*s] + 1;
+//				max_len = (max_len>len) ? max_len : len;
+//			}
+//		}
+//		arr[*s] = num;
+//		num++;
+//		s++;
+//	}
+//	len = num - first;
+//	max_len = (max_len>len) ? max_len : len;
+//	return max_len;
+//}
+int Two_points(int *arr, int left, int right)
 {
-	int arr[256] = { 0 };
-	int first = 1;
-	int len = 0;
-	int num = 1;
-	int max_len = 0;
-	while (*s != '\0')
+	int k = arr[left];
+	while (left<right)
 	{
-		if (arr[*s] != 0)
+		while (left<right&&arr[right] >= k)
 		{
-			if (first <= arr[*s])
-			{
-				len = num - first;
-				first = arr[*s] + 1;
-				max_len = (max_len>len) ? max_len : len;
-			}
+			right--;
 		}
-		arr[*s] = num;
-		num++;
-		s++;
+		if (left >= right)
+		{
+			break;
+		}
+		else
+		{
+			arr[left] = arr[right];
+			left++;
+		}
+		while (left<right&&arr[left]<= k)
+		{
+			left++;
+		}
+		if (left >= right)
+		{
+			break;
+		}
+		else
+		{
+			arr[right] = arr[left];
+			right--;
+		}
 	}
-	len = num - first;
-	max_len = (max_len>len) ? max_len : len;
-	return max_len;
+	arr[left] = k;
+	return left;
+}
+void find_mid(int *arr, int mid, int left, int right)
+{
+	int k = Two_points(arr, left, right);
+	while (k != mid)
+	{
+		if (k<mid)
+		{
+			left = k + 1;
+			k = Two_points(arr, left, right);
+		}
+		if (k>mid)
+		{
+			right = k - 1;
+			k = Two_points(arr, left, right);
+		}
+	}
+}
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
+	int arr[100000] = { 0 };
+	for (int i = 0; i<nums1Size; i++)
+	{
+		arr[i] = nums1[i];
+	}
+	for (int i = 0; i<nums2Size; i++)
+	{
+		arr[i + nums1Size] = nums2[i];
+	}
+	int left = 0;
+	int right = nums1Size + nums2Size - 1;
+	if ((nums1Size + nums2Size) % 2 == 1)
+	{
+		int mid = (nums1Size + nums2Size) / 2;
+		find_mid(arr, mid, left, right);
+		return arr[mid];
+	}
+	else
+	{
+		int mid1 = (nums1Size + nums2Size) / 2;
+		int mid2 = (nums1Size + nums2Size) / 2 - 1;
+		find_mid(arr, mid1, left, right);
+		find_mid(arr, mid2, left, right);
+		return (double)(arr[mid1] + arr[mid2]) / 2;
+	}
+}
+int main()
+{
+	int arr0[] = { 3 };
+	int arr1[] = { -2, -1 };
+	double k=findMedianSortedArrays(arr0, 1, arr1, 2);
+	printf("%f\n", k);
+	system("pause");
+	return 0;
 }
