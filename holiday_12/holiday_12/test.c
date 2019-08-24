@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<assert.h>
+#include<string.h>
 //int fun(int*arr, int len)
 //{
 //	assert(arr != NULL&&len > 0);
@@ -284,91 +285,167 @@
 //	max_len = (max_len>len) ? max_len : len;
 //	return max_len;
 //}
-int Two_points(int *arr, int left, int right)
-{
-	int k = arr[left];
-	while (left<right)
+//int Two_points(int *arr, int left, int right)
+//{
+//	int k = arr[left];
+//	while (left<right)
+//	{
+//		while (left<right&&arr[right] >= k)
+//		{
+//			right--;
+//		}
+//		if (left >= right)
+//		{
+//			break;
+//		}
+//		else
+//		{
+//			arr[left] = arr[right];
+//			left++;
+//		}
+//		while (left<right&&arr[left]<= k)
+//		{
+//			left++;
+//		}
+//		if (left >= right)
+//		{
+//			break;
+//		}
+//		else
+//		{
+//			arr[right] = arr[left];
+//			right--;
+//		}
+//	}
+//	arr[left] = k;
+//	return left;
+//}
+//void find_mid(int *arr, int mid, int left, int right)
+//{
+//	int k = Two_points(arr, left, right);
+//	while (k != mid)
+//	{
+//		if (k<mid)
+//		{
+//			left = k + 1;
+//			k = Two_points(arr, left, right);
+//		}
+//		if (k>mid)
+//		{
+//			right = k - 1;
+//			k = Two_points(arr, left, right);
+//		}
+//	}
+//}
+//double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
+//	int arr[100000] = { 0 };
+//	for (int i = 0; i<nums1Size; i++)
+//	{
+//		arr[i] = nums1[i];
+//	}
+//	for (int i = 0; i<nums2Size; i++)
+//	{
+//		arr[i + nums1Size] = nums2[i];
+//	}
+//	int left = 0;
+//	int right = nums1Size + nums2Size - 1;
+//	if ((nums1Size + nums2Size) % 2 == 1)
+//	{
+//		int mid = (nums1Size + nums2Size) / 2;
+//		find_mid(arr, mid, left, right);
+//		return arr[mid];
+//	}
+//	else
+//	{
+//		int mid1 = (nums1Size + nums2Size) / 2;
+//		int mid2 = (nums1Size + nums2Size) / 2 - 1;
+//		find_mid(arr, mid1, left, right);
+//		find_mid(arr, mid2, left, right);
+//		return (double)(arr[mid1] + arr[mid2]) / 2;
+//	}
+//}
+//int main()
+//{
+//	int arr0[] = { 3 };
+//	int arr1[] = { -2, -1 };
+//	double k=findMedianSortedArrays(arr0, 1, arr1, 2);
+//	printf("%f\n", k);
+//	system("pause");
+//	return 0;
+//}
+
+
+char * longestPalindrome(char * s){
+	int num = 1;
+	int i = 0;
+	int len = 0;
+	char *pLeft = NULL;
+	char *pRight = NULL;
+	int count = 0;
+	while (*(s + count) != '\0')
+		count++;
+	char k = 0;
+	char *p = &k;
+	if (count == 0)
 	{
-		while (left<right&&arr[right] >= k)
+		return p;
+	}
+	int *arr = (int*)malloc(sizeof(int)*count);
+	memset(arr, 0, (sizeof(int)*count));
+	while (*(s + num) != '\0'&&*(s + num + 1)!='\0')
+	{
+		if (*(s + num) == *(s + num + 1) && *(s + num) != *(s + num + 2) && *(s + num) != *(s + num - 1))
 		{
-			right--;
-		}
-		if (left >= right)
-		{
-			break;
+			pLeft = s + num;
+			pRight = s + num + 1;
+			i = 1;
 		}
 		else
 		{
-			arr[left] = arr[right];
-			left++;
+			pLeft = s + num;
+			pRight = s + num;
 		}
-		while (left<right&&arr[left]<= k)
+		while (pLeft > s&&*(pRight) != '\0'&&*pLeft == *pRight)
 		{
-			left++;
+			pLeft--;
+			pRight++;
+			i++;
 		}
-		if (left >= right)
+		arr[num] = i;
+		num++;
+		if (len<i)
 		{
+			len = i;
+		}
+		i = 0;
+	}
+	int j = 0;
+	if (len == 0)
+	{
+		return p;
+	}
+	for (j = 0; j<count; j++)
+	{
+		if (arr[j] == len)
 			break;
-		}
-		else
-		{
-			arr[right] = arr[left];
-			right--;
-		}
 	}
-	arr[left] = k;
-	return left;
-}
-void find_mid(int *arr, int mid, int left, int right)
-{
-	int k = Two_points(arr, left, right);
-	while (k != mid)
+	if (s[j] == s[j + 1])
 	{
-		if (k<mid)
-		{
-			left = k + 1;
-			k = Two_points(arr, left, right);
-		}
-		if (k>mid)
-		{
-			right = k - 1;
-			k = Two_points(arr, left, right);
-		}
-	}
-}
-double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
-	int arr[100000] = { 0 };
-	for (int i = 0; i<nums1Size; i++)
-	{
-		arr[i] = nums1[i];
-	}
-	for (int i = 0; i<nums2Size; i++)
-	{
-		arr[i + nums1Size] = nums2[i];
-	}
-	int left = 0;
-	int right = nums1Size + nums2Size - 1;
-	if ((nums1Size + nums2Size) % 2 == 1)
-	{
-		int mid = (nums1Size + nums2Size) / 2;
-		find_mid(arr, mid, left, right);
-		return arr[mid];
+		p = s + j - len + 1;
+		s[j + len + 1] = '\0';
 	}
 	else
 	{
-		int mid1 = (nums1Size + nums2Size) / 2;
-		int mid2 = (nums1Size + nums2Size) / 2 - 1;
-		find_mid(arr, mid1, left, right);
-		find_mid(arr, mid2, left, right);
-		return (double)(arr[mid1] + arr[mid2]) / 2;
+		p = s + j - len;
+		s[j + len -1] = '\0';
 	}
+	return p;
 }
 int main()
 {
-	int arr0[] = { 3 };
-	int arr1[] = { -2, -1 };
-	double k=findMedianSortedArrays(arr0, 1, arr1, 2);
-	printf("%f\n", k);
+	char str[] = "aaa";
+	char* s0=longestPalindrome(str);
+	printf("%s\n", s0);
 	system("pause");
 	return 0;
 }
