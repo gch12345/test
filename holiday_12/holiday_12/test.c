@@ -396,7 +396,11 @@ char * longestPalindrome(char * s){
 		arr[0] = 2;
 		len = 2;
 	}
-	while (*(s + num) != '\0'&&*(s + num + 1)!='\0')
+	else
+	{
+		arr[0] = 1;
+	}
+	while (*(s + num) != '\0')
 	{
 
 		int m = 0;
@@ -445,34 +449,13 @@ char * longestPalindrome(char * s){
 		i = 0;
 	}
 	int j = 0;
-	if (len == 0)
-	{
-		s[1] = '\0';
-		return s;
-	}
-	for (j = 1; j<count; j++)
+	for (j = 0; j<count; j++)
 	{
 		if (arr[j] == len)
 			break;
 	}
-	if (j == count)
-	{
-		s[2] = '\0';
-		return s;
-	}
-	int k = 0;
-	while (*(s + j + k) == *(s + j + k + 1))
-	{
-		k++;
-	}
-	int h = 0;
 	int m = 0;
-	while (h < j&&*(s + j - h) == *(s + j - h - 1))
-	{
-		h++;
-	}
-	k = k + h;
-	if ((k % 2) == 1)
+	if (len % 2 == 0)
 	{
 		m = 1;
 	}
@@ -490,7 +473,7 @@ char * longestPalindrome(char * s){
 }
 int main()
 {
-	char str[] = "";
+	char str[] = "aaaa";
 	char* s0=longestPalindrome(str);
 	//char ch = -1;
 	printf("%s", s0);
