@@ -393,22 +393,29 @@ char * longestPalindrome(char * s){
 	memset(arr, 0, (sizeof(int)*count));
 	if (s[0] == s[1])
 	{
-		arr[0] = 1;
-		len = 1;
+		arr[0] = 2;
+		len = 2;
 	}
-	int h = 0;
 	while (*(s + num) != '\0'&&*(s + num + 1)!='\0')
 	{
+
+		int m = 0;
 		int k = 0;
 		while (*(s + num + k) == *(s + num + k + 1))
 		{
 			k++;
 		}
+		int h = 0;
+		while (h < num&&*(s + num - h) == *(s + num - h - 1))
+		{
+			h++;
+		}
+		k = k + h;
 		if ((k % 2) == 1)
 		{
-			h = 1;
+			m = 1;
 		}
-		if (*(s + num) == *(s + num + 1) && h == 1)
+		if ( m == 1)
 		{
 			pLeft = s + num;
 			pRight = s + num + 1;
@@ -423,11 +430,11 @@ char * longestPalindrome(char * s){
 		{
 			pLeft--;
 			pRight++;
-			i++;
+			i = i + 2;
 		}
 		if (*pLeft == *pRight)
 		{
-			i++;
+			i = i + 2;
 		}
 		arr[num] = i;
 		num++;
@@ -458,28 +465,35 @@ char * longestPalindrome(char * s){
 	{
 		k++;
 	}
+	int h = 0;
+	int m = 0;
+	while (h < j&&*(s + j - h) == *(s + j - h - 1))
+	{
+		h++;
+	}
+	k = k + h;
 	if ((k % 2) == 1)
 	{
-		h = 1;
+		m = 1;
 	}
-	if (*(s + j) == *(s + j + 1) && h == 1)
+	if (m == 1)
 	{
-		p = s + j - len + 1 ;
-		s[j + len + 1] = '\0';
+		p = s + j - len/2 + 1 ;
+		s[j + len/2 + 1] = '\0';
 	}
 	else
 	{
-		p = s + j - len;
-		s[j + len +1] = '\0';
+		p = s + j - len/2 ;
+		s[j + len/2 + 1] = '\0';
 	}
 	return p;
 }
 int main()
 {
-	char str[] = "bbbbb";
+	char str[] = "";
 	char* s0=longestPalindrome(str);
 	//char ch = -1;
-	printf("%s\n", s0);
+	printf("%s", s0);
 	system("pause");
 	return 0;
 }
